@@ -1,9 +1,42 @@
 const inputText = document.getElementById('inputText');
-const output = document.getElementById('output');
+var output = document.getElementById('output');
+var container = document.getElementById("container");
+var outputHeight = document.getElementById("outputHeight")
+var containerHeight = document.getElementById("containerHeight")
+var bodyHeight =document.getElementById("bodyHeight")
+
+
+
 
 inputText.addEventListener('input', () => {
-    output.textContent = inputText.value;
+    
+    output.style.fontSize = "1px"
+    var fontGroesse = 1
+    /*outputHeight.textContent = output.clientHeight
+    containerHeight.textContent = container.clientHeight
+    bodyHeight.textContent = screen.availHeight*/
+
+    while(container.clientHeight < screen.availHeight) {
+        fontGroesse = fontGroesse + 1
+        output.style.fontSize = `${fontGroesse}px`;
+        output.textContent = inputText.value; 
+    } 
+    
 });
+
+/*
+function resize_to_fit() {
+    var output = document.getElementById("output");
+    var container = document.getElementById("container");
+    let fontSize = window.getComputedStyle(output).fontSize;
+    output.style.fontSize = parseFloat(fontSize) - 1 + "px"
+
+    if (output.clientHeight >= container.clientHeight) {
+      resize_to_fit();
+    }
+}
+*/
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js').then(registration => {
