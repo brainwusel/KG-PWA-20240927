@@ -1,4 +1,4 @@
-const inputText = document.getElementById('inputText');
+var inputText = document.getElementById('inputText');
 var output = document.getElementById('output');
 var container = document.getElementById("container");
 var outputHeight = document.getElementById("outputHeight")
@@ -20,8 +20,10 @@ function displayText() {
     while(container.clientHeight < screen.availHeight/1.5) {
         fontGroesse = fontGroesse + 1
         output.style.fontSize = `${fontGroesse-1}px`;
-        output.textContent = inputText.value; 
+        output.textContent = inputText.value;
     } 
+
+    inputText.value=" "
 };
 
 /*
