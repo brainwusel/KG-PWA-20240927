@@ -8,14 +8,19 @@ var bodyHeight =document.getElementById("bodyHeight")
 function displayText() {  
    
     if (inputText.value) {
-        output.style.fontSize = "1px";
-        var fontGroesse = 1;
-        while((container.clientHeight < screen.availHeight/1) & (container.clientWidth < screen.availWidth)) {
-            fontGroesse = fontGroesse + 1;
-            output.style.fontSize = `${fontGroesse+5}px`;
-            output.textContent = inputText.value;
-        } 
-        inputText.value="";
+        if (inputText.value.charAt(0) !== " "){
+           output.style.fontSize = "1px";
+            var fontGroesse = 1;
+            while((container.clientHeight < screen.availHeight/1) & (container.clientWidth < screen.availWidth)) {
+                fontGroesse = fontGroesse + 1;
+                output.style.fontSize = `${fontGroesse+5}px`;
+                output.textContent = inputText.value;
+            } 
+            inputText.value="";
+        } else {
+            inputText.value="";
+            output.textContent="";
+        }
     } else {
         inputText.value="";
     }
