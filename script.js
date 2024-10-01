@@ -8,21 +8,21 @@ var bodyHeight =document.getElementById("bodyHeight")
 
 
 
-inputText.addEventListener('input', () => {
-    
+/*inputText.addEventListener('input', () => { */
+
+function displayText() {    
     output.style.fontSize = "1px"
     var fontGroesse = 1
     /*outputHeight.textContent = output.clientHeight
     containerHeight.textContent = container.clientHeight
     bodyHeight.textContent = screen.availHeight*/
 
-    while(container.clientHeight < screen.availHeight) {
+    while(container.clientHeight < screen.availHeight/1.5) {
         fontGroesse = fontGroesse + 1
-        output.style.fontSize = `${fontGroesse}px`;
+        output.style.fontSize = `${fontGroesse-1}px`;
         output.textContent = inputText.value; 
     } 
-    
-});
+};
 
 /*
 function resize_to_fit() {
