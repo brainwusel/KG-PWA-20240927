@@ -26,12 +26,10 @@ button {
 .output {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100px;
-    /*font-size: 10vw; /* Responsive Font Size */
-    overflow-wrap: break-word; /* Text wird umgebrochen */
+    overflow-wrap: break-word;
 }
