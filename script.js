@@ -5,6 +5,8 @@ var outputHeight = document.getElementById("outputHeight")
 var containerHeight = document.getElementById("containerHeight")
 var bodyHeight =document.getElementById("bodyHeight")
 
+inputText.addEventListener("input", displayText)
+
 function displayText() {  
     if (inputText.value) {
         if (inputText.value.charAt(0) !== " "){
@@ -15,7 +17,7 @@ function displayText() {
                 output.style.fontSize = `${fontGroesse+5}px`;
                 output.textContent = inputText.value;
             } 
-            inputText.value="";
+            //inputText.value="";
         } else {
             inputText.value="";
             output.textContent="";
@@ -24,6 +26,7 @@ function displayText() {
         inputText.value="";
     }
 }
+
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
