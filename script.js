@@ -6,7 +6,6 @@ var containerHeight = document.getElementById("containerHeight")
 var bodyHeight =document.getElementById("bodyHeight")
 
 function displayText() {  
-   
     if (inputText.value) {
         if (inputText.value.charAt(0) !== " "){
            output.style.fontSize = "1px";
