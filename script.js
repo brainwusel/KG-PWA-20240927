@@ -12,7 +12,7 @@ function displayText() {
         if (inputText.value.charAt(0) !== " "){
            output.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight/1) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight/1.2) & (container.clientWidth < screen.availWidth/1.2)) {
                 fontGroesse = fontGroesse + 1;
                 output.style.fontSize = `${fontGroesse+5}px`;
                 output.textContent = inputText.value;
