@@ -12,12 +12,12 @@ function displayText() {
         if (inputText.value.charAt(0) !== " "){
            output.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight/1.2) & (container.clientWidth < screen.availWidth/1.2)) {
+            while((container.clientHeight < screen.availHeight*0.7) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
                 output.style.fontSize = `${fontGroesse+5}px`;
                 output.textContent = inputText.value;
             } 
-            //inputText.value="";
+            //if (inputText.value === "Enter") {inputText.value=""};
         } else {
             inputText.value="";
             output.textContent="";
