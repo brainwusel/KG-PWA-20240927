@@ -20,7 +20,7 @@ function displayText() {
     if (inputText.value) {        
             outputText.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.6) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight*0.9) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
                 outputText.style.fontSize = `${fontGroesse+1}px`;
                 outputText.textContent = inputText.value;
@@ -30,8 +30,8 @@ function displayText() {
     else {
         inputText.value="";
     }
-outputTitel.textContent = "MUSIKSTÜCKTITEL"
-outputTonart.textContent = "TONART"
+outputTitel.textContent = ""
+outputTonart.textContent = ""
 
 }
 
