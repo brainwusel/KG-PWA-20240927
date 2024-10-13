@@ -5,10 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: blue;
 }
 
 .container {
     text-align: center;
+    background-color: whitesmoke;
 }
 
 input {
@@ -19,12 +21,12 @@ input {
 }
 
 .output {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 0px;
+    padding: 0px;
     background-color: white;
-    display: flex;
-    justify-content: center;
+    display:flexbox;
+    justify-content:center;
     align-items: center;
-    min-height: 100px;
-    overflow-wrap: break-word;
+    min-height: 1000px;
+    overflow-wrap:anywhere;
 }

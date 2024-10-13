@@ -9,10 +9,11 @@ function displayText() {
         if (inputText.value.charAt(0) !== " "){
            outputText.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.7) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight*0.9) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
                 outputText.style.fontSize = `${fontGroesse+1}px`;
                 outputText.textContent = inputText.value;
+                outputText.style.fontFamily = "Times"
             } 
 
         } else {
