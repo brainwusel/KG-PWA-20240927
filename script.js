@@ -1,6 +1,7 @@
 var inputText = document.getElementById('inputText');
 var outputText = document.getElementById('outputText');
 var outputTitel = document.getElementById('outputTitel')
+var outputTonart = document.getElementById('outputTitel')
 var container = document.getElementById("container");
 
 inputText.addEventListener("keydown", endInput);
@@ -30,6 +31,8 @@ function displayText() {
         inputText.value="";
     }
 outputTitel.textContent = "MUSIKSTÜCKTITEL"
+outputTonart.textContent = "TONART"
+
 }
 
 document.addEventListener("touchend", startInput);
