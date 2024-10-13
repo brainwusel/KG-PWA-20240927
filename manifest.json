@@ -4,8 +4,8 @@
     "theme_color": "#222831",
     "background_color": "#ffad17",
     "display": "standalone",
-    "Scope": "",
-    "start_url": "/index.html",
+    "Scope": "/KG-PWA-20240927/",
+    "start_url": "/KG-PWA-20240927/index.html",
     "icons": [
     ]
 }
