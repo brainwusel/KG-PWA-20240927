@@ -1,26 +1,23 @@
 var inputText = document.getElementById('inputText');
-var output = document.getElementById('output');
+var outputText = document.getElementById('outputText');
 var container = document.getElementById("container");
-var outputHeight = document.getElementById("outputHeight")
-var containerHeight = document.getElementById("containerHeight")
-var bodyHeight =document.getElementById("bodyHeight")
 
-inputText.addEventListener("input", displayText)
+//inputText.addEventListener("input", displayText)
 
 function displayText() {  
     if (inputText.value) {
         if (inputText.value.charAt(0) !== " "){
-           output.style.fontSize = "1px";
+           outputText.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.8) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight*0.7) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
-                output.style.fontSize = `${fontGroesse+1}px`;
-                output.textContent = inputText.value;
+                outputText.style.fontSize = `${fontGroesse+1}px`;
+                outputText.textContent = inputText.value;
             } 
-            //if (inputText.value === "Enter") {inputText.value=""};
+
         } else {
             inputText.value="";
-            output.textContent="";
+            outputText.textContent="";
         }
     } else {
         inputText.value="";
@@ -32,13 +29,14 @@ inputText.addEventListener("keydown", endInput);
 function endInput(e) {
     if (e.code === "Enter"){
         inputText.hidden=true
+        displayText()
     }
 }
 
 document.addEventListener("touchend", startInput);
 
 function startInput() {
-    output.textContent=""
+    outputText.textContent=""
     inputText.value=""
     inputText.hidden=false
     inputText.focus()

@@ -14,8 +14,8 @@ body {
 input {
     width: 100%;
     max-width: 600px;
-    padding-top: 30px;
-    font-size: 2em;
+    padding-top: 10px;
+    font-size: 6em;
 }
 
 .output {
