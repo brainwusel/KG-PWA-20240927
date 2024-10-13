@@ -12,9 +12,9 @@ function displayText() {
         if (inputText.value.charAt(0) !== " "){
            output.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.7) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight*0.8) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
-                output.style.fontSize = `${fontGroesse+5}px`;
+                output.style.fontSize = `${fontGroesse+1}px`;
                 output.textContent = inputText.value;
             } 
             //if (inputText.value === "Enter") {inputText.value=""};
@@ -25,6 +25,23 @@ function displayText() {
     } else {
         inputText.value="";
     }
+}
+
+inputText.addEventListener("keydown", endInput);
+
+function endInput(e) {
+    if (e.code === "Enter"){
+        inputText.hidden=true
+    }
+}
+
+document.addEventListener("touchend", startInput);
+
+function startInput() {
+    output.textContent=""
+    inputText.value=""
+    inputText.hidden=false
+    inputText.focus()
 }
 
 
