@@ -13,6 +13,7 @@ function endInput(e) {
     }
 }
 
+
 function displayText() {  
     if (inputText.value.charAt(0) === " "){
         inputText.value="KG Blau-Weiß Fischenich";
