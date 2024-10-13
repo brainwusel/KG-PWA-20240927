@@ -10,7 +10,11 @@ self.addEventListener('install', e => {
         './',
         './index.html',
         './manifest.json',
-        './script.js'
+        './script.js',
+        './app.js',
+        './package-lock.json',
+        './package.json',
+        './service-worker.js',
       ]);
     })
   );

@@ -20,13 +20,13 @@ input {
     font-size: 6em;
 }
 
-.output {
+.outputText {
     margin-top: 0px;
-    padding: 0px;
+    padding: 0px; 
     background-color: white;
     display:flexbox;
     justify-content:center;
     align-items: center;
-    min-height: 1000px;
-    overflow-wrap:anywhere;
+    /* min-height: 1000px; */
+    overflow-wrap:normal; 
 }

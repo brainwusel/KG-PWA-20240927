@@ -2,12 +2,21 @@ var inputText = document.getElementById('inputText');
 var outputText = document.getElementById('outputText');
 var container = document.getElementById("container");
 
-//inputText.addEventListener("input", displayText)
+inputText.addEventListener("keydown", endInput);
+
+function endInput(e) {
+    if (e.code === "Enter"){
+        inputText.hidden=true
+        displayText()
+    }
+}
 
 function displayText() {  
-    if (inputText.value) {
-        if (inputText.value.charAt(0) !== " "){
-           outputText.style.fontSize = "1px";
+    if (inputText.value.charAt(0) === " "){
+        inputText.value="KG Blau-Weiß Fischenich";
+    }
+    if (inputText.value) {        
+            outputText.style.fontSize = "1px";
             var fontGroesse = 1;
             while((container.clientHeight < screen.availHeight*0.9) & (container.clientWidth < screen.availWidth)) {
                 fontGroesse = fontGroesse + 1;
@@ -15,22 +24,9 @@ function displayText() {
                 outputText.textContent = inputText.value;
                 outputText.style.fontFamily = "Times"
             } 
-
-        } else {
-            inputText.value="";
-            outputText.textContent="";
         }
-    } else {
+    else {
         inputText.value="";
-    }
-}
-
-inputText.addEventListener("keydown", endInput);
-
-function endInput(e) {
-    if (e.code === "Enter"){
-        inputText.hidden=true
-        displayText()
     }
 }
 
@@ -44,7 +40,7 @@ function startInput() {
 }
 
 
-if ('serviceWorker' in navigator) {
+if ('service-worker.js' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js').then(registration => {
             console.log('Service Worker registriert mit Scope:', registration.scope);
