@@ -29,6 +29,7 @@ input {
     align-items: center;
     /* min-height: 1000px; */
     overflow-wrap:normal; 
+    hyphens: auto;
 }
 
 .outputTitel {
