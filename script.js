@@ -21,9 +21,9 @@ function displayText() {
     if (inputText.value) {        
             outputText.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.9) & (container.clientWidth < screen.availWidth)) {
+            while((container.clientHeight < screen.availHeight*0.999) & (container.clientWidth < screen.availWidth*0.999)) {
                 fontGroesse = fontGroesse + 1;
-                outputText.style.fontSize = `${fontGroesse+1}px`;
+                outputText.style.fontSize = `${fontGroesse}px`;
                 outputText.textContent = inputText.value;
                 outputText.style.fontFamily = "Times"
             } 

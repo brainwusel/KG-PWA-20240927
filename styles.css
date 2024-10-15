@@ -5,12 +5,11 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: blue;
+    background-color: rgba(3, 98, 252, 0.986);
 }
 
 .container {
     text-align: center;
-    background-color: whitesmoke;
 }
 
 input {
@@ -28,7 +27,7 @@ input {
     justify-content:center;
     align-items: center;
     /* min-height: 1000px; */
-    overflow-wrap:normal; 
+    overflow-wrap: anywhere; 
     hyphens: auto;
 }
 
