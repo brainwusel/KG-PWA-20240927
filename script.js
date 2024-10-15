@@ -1,6 +1,8 @@
 var inputText = document.getElementById('inputText');
 var outputText = document.getElementById('outputText');
 var container = document.getElementById("container");
+var outputTitel = document.getElementById("outputTitel");
+var outputTonart = document.getElementById("outputTonart");
 
 inputText.addEventListener("keydown", endInput);
 
@@ -33,18 +35,19 @@ function displayText() {
     else {
         inputText.value="";
     }
-outputTitel.textContent = ""
-outputTonart.textContent = ""
-
+    outputTitel.textContent="DAS IST DER TITEL VON " + inputText.value;
+    outputTonart.textContent="DAS IST DIE TONART VON " + inputText.value;
 }
 
 document.addEventListener("touchend", startInput);
 
 function startInput() {
-    outputText.textContent=""
-    inputText.value=""
-    inputText.hidden=false
-    inputText.focus()
+    outputText.textContent="";
+    outputTitel.textContent="";
+    outputTonart.textContent="";
+    inputText.value="";
+    inputText.hidden=false;
+    inputText.focus();
 }
 
 
