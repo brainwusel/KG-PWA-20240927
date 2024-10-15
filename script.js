@@ -1,7 +1,5 @@
 var inputText = document.getElementById('inputText');
 var outputText = document.getElementById('outputText');
-var outputTitel = document.getElementById('outputTitel')
-var outputTonart = document.getElementById('outputTitel')
 var container = document.getElementById("container");
 
 inputText.addEventListener("keydown", endInput);
@@ -44,7 +42,6 @@ document.addEventListener("touchend", startInput);
 
 function startInput() {
     outputText.textContent=""
-    outputTitel.textContent=""
     inputText.value=""
     inputText.hidden=false
     inputText.focus()
