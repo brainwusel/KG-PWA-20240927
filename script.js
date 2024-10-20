@@ -1,13 +1,50 @@
-var inputText = document.getElementById('inputText');
+var inputText = document.getElementById('inputText'); // mit let anstatt var funktioniert es nicht!
 var outputText = document.getElementById('outputText');
 var container = document.getElementById("container");
 var outputTitel = document.getElementById("outputTitel");
 var outputTonart = document.getElementById("outputTonart");
 
+function musikStueck (id,nummer,titel,tonart,mappe) {
+    this.id = id;
+    this.nummer = nummer;
+    this.titel = titel;
+    this.tonart = tonart;
+    this.mappe = mappe;
+}
+var musikSammlung = [];
+
+//----------------------------------------------------------------
+
+async function getText (file) {
+    let myText = "";
+    let myObject = await fetch(file);
+    myText = await myObject.text();
+    return(myText);    
+}
+
+async function musikSammlungErstellen () {
+    var _musikSammlung = [musikStueck];
+    var _musikStueckeQuellText = await getText("musikstückequelle.csv");
+    var _musikStueckeArray = _musikStueckeQuellText.split('\n');
+    for (msText of _musikStueckeArray) {
+        
+        var msArray = msText.split(';');
+
+        let _musikStueck = musikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
+        alert("böh" + _musikStueck.titel);
+        alert(`_musikStueck.titel: ${_musikStueck.titel}`);
+        
+        _musikSammlung = _musikSammlung + musikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
+    }
+    alert(_musikSammlung[10].titel);
+    return(_musikSammlung)
+}
+
+
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
-    if (e.code === "Enter"){
+    if (e.code == "Enter"){
         inputText.hidden=true
         displayText()
     }
@@ -24,24 +61,28 @@ function displayText() {
     if (inputText.value) {        
             outputText.style.fontSize = "1px";
             var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.8) & (container.clientWidth < screen.availWidth)) {
-                fontGroesse = fontGroesse + 1;
+            while((container.clientHeight < screen.availHeight*0.6) & (container.clientWidth < screen.availWidth)) {
                 outputText.style.fontSize = `${fontGroesse}px`;
                 outputText.style.fontFamily = "Times";
                 outputText.style.overflowWrap = "normal"
                 outputText.textContent = inputText.value;
+                fontGroesse = fontGroesse + 1;
             } 
+            fontGroesse = fontGroesse - 1;
+            outputText.style.fontSize = `${fontGroesse}px`;
+            outputText.textContent = inputText.value;
         }
     else {
         inputText.value="";
     }
-    outputTitel.textContent="DAS IST DER TITEL VON " + inputText.value;
-    outputTonart.textContent="DAS IST DIE TONART VON " + inputText.value;
+    outputTitel.textContent="DAS IST DER TITEL VON " + musikSammlung[9].titel;
+    outputTonart.textContent="DAS IST DIE TONART VON " + musikSammlung[9].tonart;
 }
 
 document.addEventListener("touchend", startInput);
 
 function startInput() {
+    // alert(JSON.stringify(outputText.textContent));
     outputText.textContent="";
     outputTitel.textContent="";
     outputTonart.textContent="";
