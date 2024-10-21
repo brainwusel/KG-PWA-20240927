@@ -48,6 +48,10 @@ function endInput(e) {
         inputText.hidden=true
         displayText()
     }
+   /* if (e.code == "?"){
+        let meinAuto = Auto("Audi","rot",500);
+        meinAuto.zeige();
+    }*/
 }
 
 
@@ -80,6 +84,7 @@ function displayText() {
 }
 
 document.addEventListener("touchend", startInput);
+document.addEventListener("mousedown", startInput);
 
 function startInput() {
     // alert(JSON.stringify(outputText.textContent));
@@ -90,7 +95,6 @@ function startInput() {
     inputText.hidden=false;
     inputText.focus();
 }
-
 
 if ('serviceworker' in navigator) {
     window.addEventListener('load', () => {
