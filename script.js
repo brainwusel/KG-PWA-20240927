@@ -4,7 +4,7 @@ const container = document.getElementById("container");
 const outputTitel = document.getElementById("outputTitel");
 const outputTonart = document.getElementById("outputTonart");
 
-function musikStueck (id,nummer,titel,tonart,mappe) {
+function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
     this.nummer = nummer;
     this.titel = titel;
@@ -23,23 +23,21 @@ async function getText (file) {
 }
 
 async function musikSammlungErstellen () {
-    let _musikSammlung = [musikStueck];
+    let _musikSammlung = [];
     let _musikStueckeQuellText = await getText("musikstückequelle.csv");
     let _musikStueckeArray = _musikStueckeQuellText.split('\n');
     for (msText of _musikStueckeArray) {
-        
         let msArray = msText.split(';');
-
-        let _musikStueck = musikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
-        alert("böh" + _musikStueck.titel);
-        alert(`_musikStueck.titel: ${_musikStueck.titel}`);
-        
-        _musikSammlung = _musikSammlung + musikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
+        let _musikStueck = new MusikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
+        _musikSammlung.push(_musikStueck);
     }
-    alert(_musikSammlung[10].titel);
-    return(_musikSammlung)
+    /* 
+    for (m of _musikSammlung){
+        alert(m.nummer + "..." + m.titel + "..." + m.tonart + "..." + m.mappe);
+    }
+    */
+    return(_musikSammlung);
 }
-
 
 inputText.addEventListener("keydown", endInput);
 
