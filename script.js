@@ -1,8 +1,8 @@
-var inputText = document.getElementById('inputText'); // mit let anstatt var funktioniert es nicht!
-var outputText = document.getElementById('outputText');
-var container = document.getElementById("container");
-var outputTitel = document.getElementById("outputTitel");
-var outputTonart = document.getElementById("outputTonart");
+const inputText = document.getElementById('inputText'); // mit let anstatt var funktioniert es nicht!
+const outputText = document.getElementById('outputText');
+const container = document.getElementById("container");
+const outputTitel = document.getElementById("outputTitel");
+const outputTonart = document.getElementById("outputTonart");
 
 function musikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -11,7 +11,7 @@ function musikStueck (id,nummer,titel,tonart,mappe) {
     this.tonart = tonart;
     this.mappe = mappe;
 }
-var musikSammlung = [];
+let musikSammlung = [];
 
 //----------------------------------------------------------------
 
@@ -23,12 +23,12 @@ async function getText (file) {
 }
 
 async function musikSammlungErstellen () {
-    var _musikSammlung = [musikStueck];
-    var _musikStueckeQuellText = await getText("musikstückequelle.csv");
-    var _musikStueckeArray = _musikStueckeQuellText.split('\n');
+    let _musikSammlung = [musikStueck];
+    let _musikStueckeQuellText = await getText("musikstückequelle.csv");
+    let _musikStueckeArray = _musikStueckeQuellText.split('\n');
     for (msText of _musikStueckeArray) {
         
-        var msArray = msText.split(';');
+        let msArray = msText.split(';');
 
         let _musikStueck = musikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
         alert("böh" + _musikStueck.titel);
