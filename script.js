@@ -36,50 +36,56 @@ async function musikSammlungErstellen () {
         alert(m.nummer + "..." + m.titel + "..." + m.tonart + "..." + m.mappe);
     }
     */
-    return(_musikSammlung);
+    musikSammlung = _musikSammlung;
 }
 
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
     if (e.code == "Enter"){
-        inputText.hidden=true
-        displayText()
+        inputText.hidden=true;        
+        displayText();
     }
-   /* if (e.code == "?"){
-        let meinAuto = Auto("Audi","rot",500);
-        meinAuto.zeige();
-    }*/
 }
 
 
 function displayText() {  
     if (inputText.value.charAt(0) === " "){
         inputText.value="KG Blau-Weiß Fischenich";
-        outputText.style.hyphens = "none"
+        outputText.style.hyphens = "none";
     } else {
-        outputText.style.hyphens = "auto"
-    }
-    if (inputText.value) {        
-            outputText.style.fontSize = "1px";
-            var fontGroesse = 1;
-            while((container.clientHeight < screen.availHeight*0.6) & (container.clientWidth < screen.availWidth)) {
-                outputText.style.fontSize = `${fontGroesse}px`;
-                outputText.style.fontFamily = "Times";
-                outputText.style.overflowWrap = "normal"
-                outputText.textContent = inputText.value;
-                fontGroesse = fontGroesse + 1;
-            } 
-            fontGroesse = fontGroesse - 1;
+        outputText.style.hyphens = "auto";
+    };
+    if (inputText.value) {    
+        outputText.style.fontSize = "1px";
+        var fontGroesse = 1;
+        while((container.clientHeight < screen.availHeight*0.6) & (container.clientWidth < screen.availWidth)) {
             outputText.style.fontSize = `${fontGroesse}px`;
+            outputText.style.fontFamily = "Times";
+            outputText.style.overflowWrap = "normal";
             outputText.textContent = inputText.value;
-        }
+            fontGroesse = fontGroesse + 1;
+        } 
+        fontGroesse = fontGroesse - 1;
+        outputText.style.fontSize = `${fontGroesse}px`;
+        outputText.textContent = inputText.value;
+    }
     else {
         inputText.value="";
+    };
+
+    outputText.title.textContent = "";
+    outputTonart.textContent = "";
+    for (m of musikSammlung) {
+        if ("m.nummer" === inputText.textContent) {
+            outputTitel.textContent = m.titel;
+            outputTonart.textContent = m.tonart;
+        }
+        break;
     }
-    outputTitel.textContent="DAS IST DER TITEL VON " + musikSammlung[9].titel;
-    outputTonart.textContent="DAS IST DIE TONART VON " + musikSammlung[9].tonart;
+
 }
+
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
