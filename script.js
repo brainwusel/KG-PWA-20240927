@@ -50,16 +50,24 @@ function endInput(e) {
 
 
 function displayText() {  
+
     if (inputText.value.charAt(0) === " "){
         inputText.value="KG Blau-Weiß Fischenich";
         outputText.style.hyphens = "none";
     } else {
         outputText.style.hyphens = "auto";
     };
+
     if (inputText.value) {    
         outputText.style.fontSize = "1px";
         var fontGroesse = 1;
-        while((container.clientHeight < screen.availHeight*0.6) & (container.clientWidth < screen.availWidth)) {
+        alert(fontGroesse);
+        outputText.style.fontSize = `${fontGroesse}px`;
+            outputText.style.fontFamily = "Times";
+            outputText.style.overflowWrap = "normal";
+            outputText.textContent = inputText.value;
+            fontGroesse = fontGroesse + 1;
+        while((outputText.clientHeight < container.clientHeight) & (outputText.clientWidth < container.clientWidth)) {
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";

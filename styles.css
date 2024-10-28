@@ -1,15 +1,36 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     height: 100vh;
     margin: 0;
     background-color: white;
 }
 
+.containerOben {
+    width: 100%;
+    height: 20%;
+    background-color: yellow;
+}
+
+.outputTitel {
+    width: 49%;
+    height: 100%;
+    background-color: red;
+}
+
+.outputTonart {
+    width: 49%;
+    height: 100%;
+    background-color: blue;
+}
+
 .container {
+    height: 80%;
+    width: 100%;
     text-align: center;
+    background-color: green;
 }
 
 input {
@@ -17,30 +38,4 @@ input {
     max-width: 600px;
     padding-top: 10px;
     font-size: 6em;
-}
-
-
-
-.outputTitel {
-    margin-top: 0px;
-    padding: 0px; 
-    background-color: white;
-    display:flexbox;
-    justify-content:center;
-    align-items: center;
-    /* min-height: 1000px; */
-    hyphens: auto; 
-    font-size: 4rem
-}
-
-.outputTonart {
-    margin-top: 0px;
-    padding: 0px; 
-    background-color: white;
-    display:flexbox;
-    justify-content:center;
-    align-items: center;
-    /* min-height: 1000px; */
-    hyphens: auto;
-    font-size: 4rem
 }
