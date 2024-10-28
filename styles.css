@@ -18,12 +18,14 @@ body {
     width: 49%;
     height: 100%;
     background-color: red;
+    font-size: 6em;
 }
 
 .outputTonart {
     width: 49%;
     height: 100%;
     background-color: blue;
+    font-size: 6em;
 }
 
 .container {
