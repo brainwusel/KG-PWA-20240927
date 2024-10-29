@@ -41,7 +41,6 @@ function endInput(e) {
     }
 }
 
-
 function displayText() {  
     outputText.hidden=false;
     outputTitel.hidden=false;
@@ -75,17 +74,30 @@ function displayText() {
     };
 
     outputTitel.textContent = "";
+    outputTitel.style.backgroundColor = "white";
     outputTonart.textContent = "";
+    outputTonart.style.backgroundColor = "white";
+
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
+            if (String(m.mappe).startsWith("gelb")){
+                outputTitel.style.backgroundColor = "yellow";
+                outputTonart.style.backgroundColor = "yellow";
+            } 
+            else if (String(m.mappe).startsWith("grün")){
+                outputTitel.style.backgroundColor = "green";
+                outputTonart.style.backgroundColor = "green";
+            }
+            else if (String(m.mappe).startsWith("blau")){
+                outputTitel.style.backgroundColor = "blue";
+                outputTonart.style.backgroundColor = "blue";
+            }
             outputTitel.textContent = m.titel;
             outputTonart.textContent = m.tonart;
             break;
         }
     }
-
 }
-
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
