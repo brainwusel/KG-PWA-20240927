@@ -13,8 +13,6 @@ function MusikStueck (id,nummer,titel,tonart,mappe) {
 }
 let musikSammlung = [];
 
-//----------------------------------------------------------------
-
 async function getText (file) {
     let myText = "";
     let myObject = await fetch(file);
@@ -31,11 +29,6 @@ async function musikSammlungErstellen () {
         let _musikStueck = new MusikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
         _musikSammlung.push(_musikStueck);
     }
-    /* 
-    for (m of _musikSammlung){
-        alert(m.nummer + "..." + m.titel + "..." + m.tonart + "..." + m.mappe);
-    }
-    */
     musikSammlung = _musikSammlung;
 }
 
