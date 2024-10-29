@@ -43,6 +43,10 @@ function endInput(e) {
 
 
 function displayText() {  
+    outputText.hidden=false;
+    outputTitel.hidden=false;
+    outputTonart.hidden=false;
+    inputText.hidden=true;
 
     if (inputText.value.charAt(0) === " "){
         inputText.value="KG Blau-Weiß Fischenich";
@@ -87,10 +91,12 @@ document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
-    // alert(JSON.stringify(outputText.textContent));
     outputText.textContent="";
+    outputText.hidden=true;
     outputTitel.textContent="";
+    outputTitel.hidden=true;
     outputTonart.textContent="";
+    outputTonart.hidden=true;
     inputText.value="";
     inputText.hidden=false;
     inputText.focus();

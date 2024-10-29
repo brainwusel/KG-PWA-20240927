@@ -11,28 +11,27 @@ body {
 .containerOben {
     width: 100%;
     height: 20%;
-    background-color: yellow;
 }
 
 .outputTitel {
-    width: 49%;
+    width: 80%;
     height: 100%;
-    background-color: red;
-    font-size: 6em;
+    font-size: 8em;
+    border-color: white;
 }
 
 .outputTonart {
-    width: 49%;
+    width: 18%;
     height: 100%;
-    background-color: blue;
-    font-size: 6em;
+    font-size: 8em;
+    text-align: right;
+    border-color: white;
 }
 
 .container {
     height: 80%;
     width: 100%;
     text-align: center;
-    background-color: green;
 }
 
 input {
