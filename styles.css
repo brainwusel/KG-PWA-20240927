@@ -9,7 +9,7 @@ body {
 }
 
 .containerOben {
-    display: flexbox;
+    /*display: flexbox;*/
     width: 100%;
     height: 20%;
 }

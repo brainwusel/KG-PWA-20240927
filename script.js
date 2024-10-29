@@ -3,6 +3,7 @@ const outputText = document.getElementById('outputText');
 const container = document.getElementById("container");
 const outputTitel = document.getElementById("outputTitel");
 const outputTonart = document.getElementById("outputTonart");
+const containerOben = document.getElementById("containerOben");
 
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -93,10 +94,25 @@ function displayText() {
                 outputTonart.style.backgroundColor = "blue";
             }
             outputTitel.textContent = m.titel;
+            //outputTitel.style.fontSize = fontSizeAnpassen(outputTitel,containerOben,m.titel,outputTitel.style);
             outputTonart.textContent = m.tonart;
             break;
         }
     }
+}
+
+//SCHROTT:
+function fontSizeAnpassen (textFeld, conti, textString, textStringStyle){ // für Ausgabe: textfeld - outputText, conti - container, textString - inputText.value, textStringStyle - outputText.style
+    let _fontGroesse = 1;
+    do {
+        _fontGroesse = _fontGroesse + 1;
+        textFeld.style = textStringStyle;
+        textFeld.style.fontSize = `${_fontGroesse}px`; // Festlegung ...style.fontFamiliy und ...style.overflowWrap VOR Aufruf der Funktion
+        textFeld.textContent = textString;
+        alert(textFeld.style.fontSize + " " + textFeld.clientHeight + " " + conti.clientHeight + " " + textFeld.clientWidth + " " + conti.clientWidth);
+    } while((textFeld.clientHeight < 2 * conti.clientHeight) & (textFeld.clientWidth <= conti.clientWidth));
+    alert(textFeld.style.fontSize);
+    return textFeld.style.fontSize;
 }
 
 document.addEventListener("touchend", startInput);
