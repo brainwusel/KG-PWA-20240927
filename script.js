@@ -59,29 +59,16 @@ function displayText() {
     };
 
     if (inputText.value) { 
-        
-        
         outputText.textContent = inputText.value;
-        
         outputText.style.fontSize = "1px";
         var fontGroesse = 1;
-        outputText.style.fontSize = `${fontGroesse}px`;
-        outputText.style.fontFamily = "Times";
-        outputText.style.overflowWrap = "normal";
-        outputText.textContent = inputText.value;
-        fontGroesse = fontGroesse + 1;
-        
-        alert(outputText.textContent + "/ " + outputText.clientHeight  + "/ " + outputText.clientWidth);
-        alert(container.clientHeight + "/ " + container.clientWidth);
-
-        while((outputText.clientHeight < container.clientHeight) & (outputText.clientWidth <= container.clientWidth)) {
-
+        do {
+            fontGroesse = fontGroesse + 1;
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
             outputText.textContent = inputText.value;
-            fontGroesse = fontGroesse + 1;
-        } 
+        } while((outputText.clientHeight < container.clientHeight) & (outputText.clientWidth <= container.clientWidth))           
         fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
@@ -90,17 +77,14 @@ function displayText() {
         inputText.value="";
     };
 
-    
-
-    outputTitel.textContent = "BUH";
-    outputTonart.textContent = "BÄH";
+    outputTitel.textContent = "";
+    outputTonart.textContent = "";
     for (m of musikSammlung) {
-        if ("m.nummer" === inputText.textContent) {
-            alert("HEUREKA");
+        if (String(m.nummer) === String(inputText.value)) {
             outputTitel.textContent = m.titel;
             outputTonart.textContent = m.tonart;
+            break;
         }
-        break;
     }
 
 }
