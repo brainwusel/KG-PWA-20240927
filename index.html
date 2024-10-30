@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="containerOben" class="containerOben">
-        <textarea id="outputTitel" class="outputTitel">Titel</textarea>
-        <textarea id="outputTonart" class="outputTonart">Tonart</textarea>
+    <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric" rows="3"></input>
+    <div id="containerGesamt" class="containerGesamt">
+        <!-- Obere Zeile mit zwei Feldern -->
+        <div id="containerOben" class="containerOben">
+            <div id="outputTitel" class="outputTitel">Titel</div>
+            <div id="outputTonart" class="outputTonart">Tonart</div>
+        </div>
+
+        <!-- Unteres Feld -->
+        <div id="outputText" class="outputText">OUTPUTTEXT</div>
     </div>
-    <p></p>
-    <div id="container" class="container">        
-        <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric" rows="3"></input>
-        <div id="outputText" class="outputText"></div> 
-    </div>
+
     <script src="script.js"></script>
     <script>
         musikSammlungErstellen();

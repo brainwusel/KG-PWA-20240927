@@ -1,38 +1,58 @@
-body {
-    font-family: Arial, sans-serif;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    height: 100vh;
+* {
     margin: 0;
-    background-color: white;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerGesamt {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .containerOben {
-    /*display: flexbox;*/
-    width: 100%;
+    display: flex;
     height: 20%;
 }
 
 .outputTitel {
-    width: 70%;
-    height: 100%;
-    font-size: 7rem;
-    border-color: white;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: aqua;
 }
 
 .outputTonart {
-    width: 15%;
-    height: 100%;
-    font-size: 7rem;
-    text-align: right;
-    border-color: white;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: burlywood;
 }
 
-.container {
+.outputText {
     height: 80%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 20px;
     text-align: center;
+    background-color: chartreuse;
 }
 
 input {

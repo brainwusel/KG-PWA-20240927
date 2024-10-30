@@ -1,6 +1,6 @@
-const inputText = document.getElementById('inputText'); // mit let anstatt var funktioniert es nicht!
+const inputText = document.getElementById('inputText');
 const outputText = document.getElementById('outputText');
-const container = document.getElementById("container");
+const containerGesamt = document.getElementById("containerGesamt");
 const outputTitel = document.getElementById("outputTitel");
 const outputTonart = document.getElementById("outputTonart");
 const containerOben = document.getElementById("containerOben");
@@ -57,15 +57,16 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
+        alert(outputText.textContent);
         outputText.style.fontSize = "1px";
         var fontGroesse = 1;
         do {
-            fontGroesse = fontGroesse + 1;
-            outputText.style.fontSize = `${fontGroesse}px`;
-            outputText.style.fontFamily = "Times";
-            outputText.style.overflowWrap = "normal";
-            outputText.textContent = inputText.value;
-        } while((outputText.clientHeight < container.clientHeight) & (outputText.clientWidth <= container.clientWidth))           
+             fontGroesse = fontGroesse + 1;
+             outputText.style.fontSize = `${fontGroesse}px`;
+             outputText.style.fontFamily = "Times";
+             outputText.style.overflowWrap = "normal";
+             outputText.textContent = inputText.value;
+        } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
         fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
