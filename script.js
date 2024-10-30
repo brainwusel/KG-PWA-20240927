@@ -57,19 +57,19 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
-        alert(outputText.textContent);
-        outputText.style.fontSize = "1px";
-        var fontGroesse = 1;
-        do {
-             fontGroesse = fontGroesse + 1;
-             outputText.style.fontSize = `${fontGroesse}px`;
-             outputText.style.fontFamily = "Times";
-             outputText.style.overflowWrap = "normal";
-             outputText.textContent = inputText.value;
-        } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
-        fontGroesse = fontGroesse - 1;
-        outputText.style.fontSize = `${fontGroesse}px`;
-        outputText.textContent = inputText.value;
+        // outputText.style.fontSize = "50px";
+        // var fontGroesse = 1;
+        // do {
+        //      fontGroesse = fontGroesse + 1;
+        //      outputText.style.fontSize = `${fontGroesse}px`;
+        //      outputText.style.fontFamily = "Times";
+        //      outputText.style.overflowWrap = "normal";
+        //      outputText.textContent = inputText.value;
+        //      alert(outputText.clientHeight+" "+containerGesamt.clientHeight);
+        // } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
+        // fontGroesse = fontGroesse - 1;
+        // outputText.style.fontSize = `${fontGroesse}px`;
+        // outputText.textContent = inputText.value;
     }
     else {
         inputText.value="";
@@ -100,20 +100,22 @@ function displayText() {
             break;
         }
     }
+    
+    document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
 }
 
-//SCHROTT:
-function fontSizeAnpassen (textFeld, conti, textString, textStringStyle){ // für Ausgabe: textfeld - outputText, conti - container, textString - inputText.value, textStringStyle - outputText.style
-    let _fontGroesse = 1;
-    do {
-        _fontGroesse = _fontGroesse + 1;
-        textFeld.style = textStringStyle;
-        textFeld.style.fontSize = `${_fontGroesse}px`; // Festlegung ...style.fontFamiliy und ...style.overflowWrap VOR Aufruf der Funktion
-        textFeld.textContent = textString;
-        alert(textFeld.style.fontSize + " " + textFeld.clientHeight + " " + conti.clientHeight + " " + textFeld.clientWidth + " " + conti.clientWidth);
-    } while((textFeld.clientHeight < 2 * conti.clientHeight) & (textFeld.clientWidth <= conti.clientWidth));
-    alert(textFeld.style.fontSize);
-    return textFeld.style.fontSize;
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
+});
+
+function fontSizeAnpassen (element){
+    let fontSize = 1;
+    element.style.fontSize = fontSize + 'px';
+    while (element.scrollWidth <= element.clientWidth & element.scrollHeight <= element.clientHeigth){
+        fontSize++;
+        element.style.fontSize = fontSize + 'px';
+    }
+    element.style.fontSize = (fontSize - 1) + 'px';
 }
 
 document.addEventListener("touchend", startInput);
