@@ -101,14 +101,18 @@ function displayText() {
             else if (String(m.mappe).startsWith("grün")){
                 containerTitel.style.backgroundColor = "green";
                 outputTitel.style.backgroundColor = "green";
+                outputTitel.style.color = "white";
                 containerTonart.style.backgroundColor = "green";
                 outputTonart.style.backgroundColor = "green";
+                outputTonart.style.color = "white";
             }
             else if (String(m.mappe).startsWith("blau")){
                 containerTitel.style.backgroundColor = "blue";
                 outputTitel.style.backgroundColor = "blue";
+                outputTitel.style.color = "white";
                 containerTonart.style.backgroundColor = "blue";
                 outputTonart.style.backgroundColor = "blue";
+                outputTonart.style.color = "white";
             }
             
             if (m.titel !== " " && m.titel !== ""){
@@ -170,6 +174,10 @@ function startInput() {
     outputTitel.style.backgroundColor = "white";
     outputTonart.style.backgroundColor = "white";
     outputText.style.backgroundColor = "white";
+
+    outputTitel.style.color = "black";
+    outputTonart.style.color = "black";
+    outputText.style.color = "black";
 }
 
 if ('serviceworker' in navigator) {
