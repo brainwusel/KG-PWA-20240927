@@ -67,19 +67,19 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
-        // outputText.style.fontSize = "50px";
-        // var fontGroesse = 1;
-        // do {
-        //      fontGroesse = fontGroesse + 1;
-        //      outputText.style.fontSize = `${fontGroesse}px`;
-        //      outputText.style.fontFamily = "Times";
-        //      outputText.style.overflowWrap = "normal";
-        //      outputText.textContent = inputText.value;
-        //      alert(outputText.clientHeight+" "+containerGesamt.clientHeight);
-        // } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
-        // fontGroesse = fontGroesse - 1;
-        // outputText.style.fontSize = `${fontGroesse}px`;
-        // outputText.textContent = inputText.value;
+
+        outputText.style.fontSize = "50px";
+        var fontGroesse = 1;
+        do {
+              fontGroesse = fontGroesse + 1;
+              outputText.style.fontSize = `${fontGroesse}px`;
+              outputText.style.fontFamily = "Times";
+              outputText.style.overflowWrap = "normal";
+              outputText.textContent = inputText.value;
+              } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
+        fontGroesse = fontGroesse - 1;
+        outputText.style.fontSize = `${fontGroesse}px`;
+        outputText.textContent = inputText.value;
     }
     else {
         inputText.value="";
