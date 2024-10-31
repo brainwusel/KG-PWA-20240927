@@ -67,7 +67,6 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
-        alert(outputText.textContent);
         // outputText.style.fontSize = "50px";
         // var fontGroesse = 1;
         // do {
@@ -120,16 +119,16 @@ window.addEventListener('resize', () => {
     document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
 });
 
-function fontSizeAnpassen (textFeld, container){
-    
-    let fontSize = 1;
-    textFeld.style.fontSize = fontSize + 'px';
-    while (textFeld.clientHeigth <= container.clientHeigth){
-        fontSize++;
-        textFeld.style.fontSize = fontSize + 'px';
-    }
-    textFeld.style.fontSize = (fontSize - 1) + 'px';
-}
+
+// function fontSizeAnpassen (textFeld, container){
+//     let fontSize = 1;
+//     textFeld.style.fontSize = fontSize + 'px';
+//     while (textFeld.clientHeigth <= container.clientHeigth){
+//         fontSize++;
+//         textFeld.style.fontSize = fontSize + 'px';
+//     }
+//     textFeld.style.fontSize = (fontSize - 1) + 'px';
+// }
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
