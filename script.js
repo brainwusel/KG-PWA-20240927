@@ -16,6 +16,7 @@ function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.tonart = tonart;
     this.mappe = mappe;
 }
+
 let musikSammlung = [];
 
 async function getText (file) {
@@ -40,7 +41,7 @@ async function musikSammlungErstellen () {
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
-    if (e.code == "Enter"){
+    if (e.code === "Enter"){
         inputText.hidden=true;        
         displayText();
     }
@@ -140,26 +141,7 @@ function displayText() {
             break;
         }
     }
-    
-    // fontSizeAnpassen(outputText, containerUnten);
-    // fontSizeAnpassen(outputTitel, containerTitel);
-    // fontSizeAnpassen(outputTonart, containerTonart);
 }
-
-window.addEventListener('resize', () => {
-    document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
-});
-
-
-// function fontSizeAnpassen (textFeld, container){
-//     let fontSize = 1;
-//     textFeld.style.fontSize = fontSize + 'px';
-//     while (textFeld.clientHeigth <= container.clientHeigth){
-//         fontSize++;
-//         textFeld.style.fontSize = fontSize + 'px';
-//     }
-//     textFeld.style.fontSize = (fontSize - 1) + 'px';
-// }
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
@@ -181,6 +163,7 @@ function startInput() {
     inputText.value="";
     inputText.focus();
 
+    containerOben.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
     containerTonart.style.backgroundColor = "white";
     containerUnten.style.backgroundColor = "white";
