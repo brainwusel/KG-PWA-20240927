@@ -1,9 +1,13 @@
 const inputText = document.getElementById('inputText');
-const outputText = document.getElementById('outputText');
 const containerGesamt = document.getElementById("containerGesamt");
-const outputTitel = document.getElementById("outputTitel");
-const outputTonart = document.getElementById("outputTonart");
 const containerOben = document.getElementById("containerOben");
+const containerTitel = document.getElementById("containerTitel");
+const outputTitel = document.getElementById("outputTitel");
+const containerTonart = document.getElementById("containerTonart");
+const outputTonart = document.getElementById("outputTonart");
+const containerUnten = document.getElementById("containerUnten");
+const outputText = document.getElementById("outputText");
+
 
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -43,6 +47,12 @@ function endInput(e) {
 }
 
 function displayText() {  
+    
+    containerGesamt.hidden=false;
+    containerOben.hidden=false;
+    containerTitel.hidden=false;
+    containerTonart.hidden=false;
+    containerUnten.hidden=false;
     outputText.hidden=false;
     outputTitel.hidden=false;
     outputTonart.hidden=false;
@@ -57,6 +67,7 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
+        alert(outputText.textContent);
         // outputText.style.fontSize = "50px";
         // var fontGroesse = 1;
         // do {
@@ -95,41 +106,51 @@ function displayText() {
                 outputTonart.style.backgroundColor = "blue";
             }
             outputTitel.textContent = m.titel;
-            //outputTitel.style.fontSize = fontSizeAnpassen(outputTitel,containerOben,m.titel,outputTitel.style);
             outputTonart.textContent = m.tonart;
             break;
         }
     }
     
-    document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
+    // fontSizeAnpassen(outputText, containerUnten);
+    // fontSizeAnpassen(outputTitel, containerTitel);
+    // fontSizeAnpassen(outputTonart, containerTonart);
 }
 
 window.addEventListener('resize', () => {
     document.querySelectorAll('.outputText, .outputTitel, .outputTonart').forEach(fontSizeAnpassen);
 });
 
-function fontSizeAnpassen (element){
+function fontSizeAnpassen (textFeld, container){
+    
     let fontSize = 1;
-    element.style.fontSize = fontSize + 'px';
-    while (element.scrollWidth <= element.clientWidth & element.scrollHeight <= element.clientHeigth){
+    textFeld.style.fontSize = fontSize + 'px';
+    while (textFeld.clientHeigth <= container.clientHeigth){
         fontSize++;
-        element.style.fontSize = fontSize + 'px';
+        textFeld.style.fontSize = fontSize + 'px';
     }
-    element.style.fontSize = (fontSize - 1) + 'px';
+    textFeld.style.fontSize = (fontSize - 1) + 'px';
 }
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
-    outputText.textContent="";
+
+    containerGesamt.hidden=true;
+    containerOben.hidden=true;
+    containerTitel.hidden=true;
+    containerTonart.hidden=true;
+    containerUnten.hidden=true
     outputText.hidden=true;
-    outputTitel.textContent="";
     outputTitel.hidden=true;
-    outputTonart.textContent="";
     outputTonart.hidden=true;
-    inputText.value="";
     inputText.hidden=false;
+
+
+    outputText.textContent="";
+    outputTitel.textContent="";
+    outputTonart.textContent="";
+    inputText.value="";
     inputText.focus();
 }
 

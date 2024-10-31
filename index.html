@@ -13,18 +13,24 @@
     <div id="containerGesamt" class="containerGesamt">
         <!-- Obere Zeile mit zwei Feldern -->
         <div id="containerOben" class="containerOben">
-            <div id="outputTitel" class="outputTitel">Titel</div>
-            <div id="outputTonart" class="outputTonart">Tonart</div>
+            <div id="containerTitel" class="containerTitel">
+                <div id="outputTitel" class="outputTitel">Titel</div>
+            </div>
+            <div id=containerTonart class=containerTonart>
+                <div id="outputTonart" class="outputTonart">Tonart</div>
+            </div>
         </div>
 
         <!-- Unteres Feld -->
-        <div id="outputText" class="outputText">OUTPUTTEXT</div>
+        <div id="containerUnten" class="containerUnten">
+            <div id="outputText" class="outputText">OUTPUTTEXT</div>
+        </div>
     </div>
 
     <script src="script.js"></script>
     <script>
         musikSammlungErstellen();
-        inputText.value = " ";
+        inputText.value = "BOING";
         displayText();
     </script>
 </body>
