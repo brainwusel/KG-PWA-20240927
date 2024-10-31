@@ -67,7 +67,6 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
-
         outputText.style.fontSize = "50px";
         var fontGroesse = 1;
         do {
@@ -93,19 +92,51 @@ function displayText() {
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
             if (String(m.mappe).startsWith("gelb")){
+                containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
+                containerTonart.style.backgroundColor = "yellow";
                 outputTonart.style.backgroundColor = "yellow";
             } 
             else if (String(m.mappe).startsWith("grün")){
+                containerTitel.style.backgroundColor = "green";
                 outputTitel.style.backgroundColor = "green";
+                containerTonart.style.backgroundColor = "green";
                 outputTonart.style.backgroundColor = "green";
             }
             else if (String(m.mappe).startsWith("blau")){
+                containerTitel.style.backgroundColor = "blue";
                 outputTitel.style.backgroundColor = "blue";
+                containerTonart.style.backgroundColor = "blue";
                 outputTonart.style.backgroundColor = "blue";
             }
-            outputTitel.textContent = m.titel;
-            outputTonart.textContent = m.tonart;
+            
+            if (m.titel !== " " && m.titel !== ""){
+                outputTitel.style.fontSize = "50px";
+                var fontGroesse = 1;
+                do {
+                    fontGroesse = fontGroesse + 1;
+                    outputTitel.style.fontSize = `${fontGroesse}px`;
+                    outputTitel.style.fontFamily = "Times";
+                    outputTitel.style.overflowWrap = "normal";
+                    outputTitel.textContent = m.titel;
+                } while((outputTitel.clientHeight < containerTitel.clientHeight) & (outputTitel.clientWidth <= containerTitel.clientWidth))           
+                fontGroesse = fontGroesse - 1;
+                outputTitel.style.fontSize = `${fontGroesse}px`;      
+            }
+            if (m.tonart !== " "){
+                outputTonart.style.fontSize = "50px";
+                var fontGroesse = 1;
+                do {
+                    fontGroesse = fontGroesse + 1;
+                    outputTonart.style.fontSize = `${fontGroesse}px`;
+                    outputTonart.style.fontFamily = "Times";
+                    outputTonart.style.overflowWrap = "normal";
+                    outputTonart.textContent = m.tonart;
+                } while((outputTonart.clientHeight < containerTonart.clientHeight) & (outputTonart.clientWidth <= containerTonart.clientWidth))           
+                fontGroesse = fontGroesse - 1;
+                outputTonart.style.fontSize = `${fontGroesse}px`;         
+            }
+            
             break;
         }
     }
@@ -134,7 +165,6 @@ document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
-
     containerGesamt.hidden=true;
     containerOben.hidden=true;
     containerTitel.hidden=true;
@@ -145,12 +175,18 @@ function startInput() {
     outputTonart.hidden=true;
     inputText.hidden=false;
 
-
     outputText.textContent="";
     outputTitel.textContent="";
     outputTonart.textContent="";
     inputText.value="";
     inputText.focus();
+
+    containerTitel.style.backgroundColor = "white";
+    containerTonart.style.backgroundColor = "white";
+    containerUnten.style.backgroundColor = "white";
+    outputTitel.style.backgroundColor = "white";
+    outputTonart.style.backgroundColor = "white";
+    outputText.style.backgroundColor = "white";
 }
 
 if ('serviceworker' in navigator) {
