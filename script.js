@@ -64,6 +64,18 @@ function displayText() {
     outputTonart.hidden=false;
     inputText.hidden=true;
 
+    outputTitel.textContent = "";
+    outputTitel.style.color = "black";
+    outputTitel.style.backgroundColor = "white";
+    containerTitel.style.backgroundColor = "white";
+
+    outputTonart.textContent = "";
+    outputTonart.style.color = "black";
+    outputTonart.style.backgroundColor = "white";
+    containerTonart.style.backgroundColor = "white";
+
+    outputText.textContent = "";
+
     inputText.value = String(inputText.value).trim();
 
     if (inputText.value.charAt(0) === " " || inputText.value === ""){
@@ -72,14 +84,6 @@ function displayText() {
     } else {
         outputText.style.hyphens = "auto";
     };
-
-   
-
-    outputTitel.textContent = "";
-    outputTitel.style.backgroundColor = "white";
-
-    outputTonart.textContent = "";
-    outputTonart.style.backgroundColor = "white";
 
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
@@ -110,8 +114,7 @@ function displayText() {
             }
             
             if (m.titel !== " " && m.titel !== ""){
-                // outputTitel.style.fontSize = "50px";
-                var fontGroesse = 1;
+                let fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
                     outputTitel.style.fontSize = `${fontGroesse}px`;
@@ -123,8 +126,7 @@ function displayText() {
                 outputTitel.style.fontSize = `${fontGroesse}px`;      
             }
             if (m.tonart !== " "){
-                // outputTonart.style.fontSize = "50px";
-                var fontGroesse = 1;
+                let fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
                     outputTonart.style.fontSize = `${fontGroesse}px`;
@@ -141,18 +143,15 @@ function displayText() {
 
     if (inputText.value) { 
         outputText.textContent = inputText.value;
-        outputText.style.fontSize = "50px";
-
-        var fontGroesse = 1;
-
+        let fontGroesse = 1;
         if (musikStueckAngezeigt === true) {
             do {
-                  fontGroesse = fontGroesse + 1;
+                fontGroesse = fontGroesse + 1;
                 outputText.style.fontSize = `${fontGroesse}px`;
                 outputText.style.fontFamily = "Times";
                 outputText.style.overflowWrap = "normal";
                 outputText.textContent = inputText.value;
-                } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
+            } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
             fontGroesse = fontGroesse - 1;
         }
         if (musikStueckAngezeigt === false) {
@@ -162,7 +161,7 @@ function displayText() {
                 outputText.style.fontFamily = "Times";
                 outputText.style.overflowWrap = "normal";
                 outputText.textContent = inputText.value;
-                } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
+            } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
             fontGroesse = fontGroesse - 1;
         }
         outputText.style.fontSize = `${fontGroesse}px`;
