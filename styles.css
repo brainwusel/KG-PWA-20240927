@@ -55,6 +55,10 @@ body, html {
     background-color: white;
 }
 
+.ouputText {
+    hyphens: auto;
+}
+
 .inputText {
     width: 100%;
     height: 40%;

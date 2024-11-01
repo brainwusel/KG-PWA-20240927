@@ -80,10 +80,7 @@ function displayText() {
 
     if (inputText.value.charAt(0) === " " || inputText.value === ""){
         inputText.value="KG Blau-Weiß Fischenich";
-        outputText.style.hyphens = "none";
-    } else {
-        outputText.style.hyphens = "auto";
-    };
+    }
 
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
@@ -150,6 +147,7 @@ function displayText() {
                 outputText.style.fontSize = `${fontGroesse}px`;
                 outputText.style.fontFamily = "Times";
                 outputText.style.overflowWrap = "normal";
+                outputText.style.hyphens = "auto";
                 outputText.textContent = inputText.value;
             } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
             fontGroesse = fontGroesse - 1;
@@ -160,9 +158,10 @@ function displayText() {
                 outputText.style.fontSize = `${fontGroesse}px`;
                 outputText.style.fontFamily = "Times";
                 outputText.style.overflowWrap = "normal";
+                outputText.style.hyphens = "auto";
                 outputText.textContent = inputText.value;
             } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
-            fontGroesse = fontGroesse - 1;
+            fontGroesse = fontGroesse - 2;
         }
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
