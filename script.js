@@ -41,6 +41,7 @@ async function musikSammlungErstellen () {
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
+    inputText.value = String(inputText.value).toUpperCase();
     if (e.code === "Space") {
         inputText.inputMode = "text"
     }
