@@ -59,7 +59,9 @@ function displayText() {
     outputTonart.hidden=false;
     inputText.hidden=true;
 
-    if (inputText.value.charAt(0) === " "){
+    inputText.value = String(inputText.value).trim();
+
+    if (inputText.value.charAt(0) === " " || inputText.value === ""){
         inputText.value="KG Blau-Weiß Fischenich";
         outputText.style.hyphens = "none";
     } else {
@@ -81,10 +83,7 @@ function displayText() {
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
     }
-    else {
-        inputText.value="";
-    };
-
+    
     outputTitel.textContent = "";
     outputTitel.style.backgroundColor = "white";
     outputTonart.textContent = "";
@@ -95,8 +94,10 @@ function displayText() {
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
+                outputTitel.style.color = "black";
                 containerTonart.style.backgroundColor = "yellow";
                 outputTonart.style.backgroundColor = "yellow";
+                outputTonart.style.color = "black";
             } 
             else if (String(m.mappe).startsWith("grün")){
                 containerTitel.style.backgroundColor = "green";
@@ -116,7 +117,7 @@ function displayText() {
             }
             
             if (m.titel !== " " && m.titel !== ""){
-                outputTitel.style.fontSize = "50px";
+                // outputTitel.style.fontSize = "50px";
                 var fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
@@ -129,7 +130,7 @@ function displayText() {
                 outputTitel.style.fontSize = `${fontGroesse}px`;      
             }
             if (m.tonart !== " "){
-                outputTonart.style.fontSize = "50px";
+                // outputTonart.style.fontSize = "50px";
                 var fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
@@ -141,7 +142,6 @@ function displayText() {
                 fontGroesse = fontGroesse - 1;
                 outputTonart.style.fontSize = `${fontGroesse}px`;         
             }
-            
             break;
         }
     }
