@@ -8,6 +8,7 @@ const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
 
+let musikStueckAngezeigt = false
 
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -72,31 +73,17 @@ function displayText() {
         outputText.style.hyphens = "auto";
     };
 
-    if (inputText.value) { 
-        outputText.textContent = inputText.value;
-        outputText.style.fontSize = "50px";
-
-        var fontGroesse = 1;
-        do {
-              fontGroesse = fontGroesse + 1;
-              outputText.style.fontSize = `${fontGroesse}px`;
-              outputText.style.fontFamily = "Times";
-              outputText.style.overflowWrap = "normal";
-              outputText.textContent = inputText.value;
-              } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
-        fontGroesse = fontGroesse - 1;
-        
-        outputText.style.fontSize = `${fontGroesse}px`;
-        outputText.textContent = inputText.value;
-    }
+   
 
     outputTitel.textContent = "";
     outputTitel.style.backgroundColor = "white";
+
     outputTonart.textContent = "";
     outputTonart.style.backgroundColor = "white";
 
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
+            musikStueckAngezeigt = true;
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
@@ -151,12 +138,44 @@ function displayText() {
             break;
         }
     }
+
+    if (inputText.value) { 
+        outputText.textContent = inputText.value;
+        outputText.style.fontSize = "50px";
+
+        var fontGroesse = 1;
+
+        if (musikStueckAngezeigt === true) {
+            do {
+                  fontGroesse = fontGroesse + 1;
+                outputText.style.fontSize = `${fontGroesse}px`;
+                outputText.style.fontFamily = "Times";
+                outputText.style.overflowWrap = "normal";
+                outputText.textContent = inputText.value;
+                } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
+            fontGroesse = fontGroesse - 1;
+        }
+        if (musikStueckAngezeigt === false) {
+            do {
+                  fontGroesse = fontGroesse + 1;
+                outputText.style.fontSize = `${fontGroesse}px`;
+                outputText.style.fontFamily = "Times";
+                outputText.style.overflowWrap = "normal";
+                outputText.textContent = inputText.value;
+                } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
+            fontGroesse = fontGroesse - 1;
+        }
+        outputText.style.fontSize = `${fontGroesse}px`;
+        outputText.textContent = inputText.value;
+    }
 }
 
 document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
+    musikStueckAngezeigt = false;
+
     containerGesamt.hidden=true;
     containerOben.hidden=true;
     containerTitel.hidden=true;
