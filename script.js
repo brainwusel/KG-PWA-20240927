@@ -41,6 +41,9 @@ async function musikSammlungErstellen () {
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
+    if (e.code === "Space") {
+        inputText.inputMode = "text"
+    }
     if (e.code === "Enter"){
         inputText.hidden=true;        
         displayText();
@@ -71,6 +74,7 @@ function displayText() {
     if (inputText.value) { 
         outputText.textContent = inputText.value;
         outputText.style.fontSize = "50px";
+
         var fontGroesse = 1;
         do {
               fontGroesse = fontGroesse + 1;
@@ -80,10 +84,11 @@ function displayText() {
               outputText.textContent = inputText.value;
               } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
         fontGroesse = fontGroesse - 1;
+        
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
     }
-    
+
     outputTitel.textContent = "";
     outputTitel.style.backgroundColor = "white";
     outputTonart.textContent = "";
@@ -166,6 +171,7 @@ function startInput() {
     outputTonart.textContent="";
     inputText.value="";
     inputText.focus();
+    inputText.inputMode="numeric";
 
     containerOben.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
