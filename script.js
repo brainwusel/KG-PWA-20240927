@@ -161,12 +161,12 @@ function displayText() {
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
 
-        if (musikStueckAngezeigt === true) {
-            pfeilLinks.style.backgroundColor="lightgrey";
-            pfeilRechts.style.backgroundColor="lightgrey";
-            pfeilLinks.textContent="<";
-            pfeilRechts.textContent=">";
-        }
+        // if (musikStueckAngezeigt === true) {
+        //     pfeilLinks.style.backgroundColor="lightgrey";
+        //     pfeilRechts.style.backgroundColor="lightgrey";
+        //     pfeilLinks.textContent="<";
+        //     pfeilRechts.textContent=">";
+        // }
         if (musikStueckAngezeigt === false) {
             pfeilLinks.style.backgroundColor="white";
             pfeilRechts.style.backgroundColor="White";
@@ -182,36 +182,36 @@ containerOutputText.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-pfeilLinks.addEventListener("touchend", vorherigesStück);
-pfeilLinks.addEventListener("mousedown", vorherigesStück);
+// pfeilLinks.addEventListener("touchend", vorherigesStück);
+// pfeilLinks.addEventListener("mousedown", vorherigesStück);
 
-pfeilRechts.addEventListener("touchend", nächstesStück);
-pfeilRechts.addEventListener("mousedown", nächstesStück);
+// pfeilRechts.addEventListener("touchend", nächstesStück);
+// pfeilRechts.addEventListener("mousedown", nächstesStück);
 
-function vorherigesStück (event) {
-    let _id = 0;
-    for (m of musikSammlung){
-        if (String(m.nummer) === String(inputText.value)) {
-            _id = parseInt(m.id);
-        }     
-    }
-    if (_id > 0) {
-        inputText.value = musikSammlung[(_id-1)].nummer;
-    }
-    displayText();
-}
-function nächstesStück () {
-    let _id = 191;
-    for (m of musikSammlung){
-        if (String(m.nummer) === String(inputText.value)) {
-            _id = parseInt(m.id);
-        }        
-    }
-    if (_id < 191) {
-        inputText.value = musikSammlung[(_id+1)].nummer;
-    }
-    displayText();
-}
+// function vorherigesStück (event) {
+//     let _id = 0;
+//     for (m of musikSammlung){
+//         if (String(m.nummer) === String(inputText.value)) {
+//             _id = parseInt(m.id);
+//         }     
+//     }
+//     if (_id > 0) {
+//         inputText.value = musikSammlung[(_id-1)].nummer;
+//     }
+//     displayText();
+// }
+// function nächstesStück () {
+//     let _id = 191;
+//     for (m of musikSammlung){
+//         if (String(m.nummer) === String(inputText.value)) {
+//             _id = parseInt(m.id);
+//         }        
+//     }
+//     if (_id < 191) {
+//         inputText.value = musikSammlung[(_id+1)].nummer;
+//     }
+//     displayText();
+// }
 
 
 function startInput() {
