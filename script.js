@@ -157,7 +157,7 @@ function displayText() {
             outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
         } while((outputText.clientHeight < containerOutputText.clientHeight) & (outputText.clientWidth <= containerOutputText.clientWidth))           
-        fontGroesse = fontGroesse - 1;
+        fontGroesse = fontGroesse - 0;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
 
