@@ -47,6 +47,12 @@ function endInput(e) {
         inputText.inputMode = "text"
     }
     if (e.code === "Enter"){
+        if (inputText.value === "T"){
+            inputText.value = "1 x TUSCH!";
+        }
+        if (String(inputText.value).startsWith("TT")){
+            inputText.value = "3 x TUSCH!";
+        }
         inputText.hidden=true;        
         displayText();
     }
@@ -158,8 +164,6 @@ document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
-    musikStueckAngezeigt = false;
-
     containerGesamt.hidden=true;
     containerOben.hidden=true;
     containerTitel.hidden=true;

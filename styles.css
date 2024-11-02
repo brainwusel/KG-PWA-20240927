@@ -28,8 +28,6 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    padding: 10px;
     background-color: aqua;
 }
 
@@ -38,8 +36,6 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    padding: 10px;
     background-color: burlywood;
 }
 
@@ -49,7 +45,6 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
     text-align: center;
     background-color: white;
 }
