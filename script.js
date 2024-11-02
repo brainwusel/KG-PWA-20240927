@@ -182,17 +182,13 @@ containerOutputText.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-pfeilLinks.addEventListener("touchend", vorherigesStück);
+pfeilLinks.addEventListener("touchstart", vorherigesStück);
 pfeilLinks.addEventListener("mousedown", vorherigesStück);
 
-pfeilRechts.addEventListener("touchend", nächstesStück);
+pfeilRechts.addEventListener("touchstart", nächstesStück);
 pfeilRechts.addEventListener("mousedown", nächstesStück);
 
 function vorherigesStück (event) {
-    let w = 0
-    for (i=0;i<100000000;i++){
-        w = Math.sin(Math.sqrt(i));
-    };
     let _id = 0;
     for (m of musikSammlung){
         if (String(m.nummer) === String(inputText.value)) {
