@@ -177,8 +177,8 @@ function displayText() {
 containerOutputText.addEventListener("touchend", startInput);
 containerOutputText.addEventListener("mousedown", startInput);
 
-containerTitel.addEventListener("touchend", startInput);
-containerTitel.addEventListener("mousedown", startInput);
+outputTitel.addEventListener("touchend", startInput);
+outputTitel.addEventListener("mousedown", startInput);
 
 pfeilLinks.addEventListener("touchend", vorherigesStück);
 pfeilLinks.addEventListener("mousedown", vorherigesStück);
@@ -196,6 +196,7 @@ function vorherigesStück () {
     if (_id > 0) {
         inputText.value = musikSammlung[(_id-1)].nummer;
     }
+    for (i = 0; i = i + 1; i = 100000){};
     displayText();
 }
 function nächstesStück () {
@@ -208,6 +209,7 @@ function nächstesStück () {
     if (_id < 191) {
         inputText.value = musikSammlung[(_id+1)].nummer;
     }
+    for (i = 0; i = i + 1; i = 100000){};
     displayText();
 }
 
