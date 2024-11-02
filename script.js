@@ -6,12 +6,7 @@ const outputTitel = document.getElementById("outputTitel");
 const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
-const containerOutputText = document.getElementById("containerOutputText");
-const pfeilRechts = document.getElementById("pfeilRechts");
-const pfeilLinks = document.getElementById("pfeilLinks");
 const outputText = document.getElementById("outputText");
-
-let musikStueckAngezeigt = false
 
 let touchZähler = 0;
 
@@ -58,8 +53,6 @@ function endInput(e) {
 }
 
 function displayText() {  
-
-    musikStueckAngezeigt = false;
     
     containerGesamt.hidden=false;
     containerOben.hidden=false;
@@ -91,7 +84,6 @@ function displayText() {
 
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
-            musikStueckAngezeigt = true;
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
@@ -153,64 +145,17 @@ function displayText() {
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
-           // outputText.style.hyphens = "auto";
+            outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
-        } while((outputText.clientHeight < containerOutputText.clientHeight) & (outputText.clientWidth <= containerOutputText.clientWidth))           
+        } while((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
         fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
-
-        // if (musikStueckAngezeigt === true) {
-        //     pfeilLinks.style.backgroundColor="lightgrey";
-        //     pfeilRechts.style.backgroundColor="lightgrey";
-        //     pfeilLinks.textContent="<";
-        //     pfeilRechts.textContent=">";
-        // }
-        if (musikStueckAngezeigt === false) {
-            pfeilLinks.style.backgroundColor="white";
-            pfeilRechts.style.backgroundColor="White";
-            pfeilLinks.textContent="";
-            pfeilRechts.textContent="";
-        }
     }
 }
 
-containerOutputText.addEventListener("touchend", startInput);
-containerOutputText.addEventListener("mousedown", startInput);
-outputTitel.addEventListener("touchend", startInput);
-outputTitel.addEventListener("mousedown", startInput);
-
-// pfeilLinks.addEventListener("touchend", vorherigesStück);
-// pfeilLinks.addEventListener("mousedown", vorherigesStück);
-
-// pfeilRechts.addEventListener("touchend", nächstesStück);
-// pfeilRechts.addEventListener("mousedown", nächstesStück);
-
-// function vorherigesStück (event) {
-//     let _id = 0;
-//     for (m of musikSammlung){
-//         if (String(m.nummer) === String(inputText.value)) {
-//             _id = parseInt(m.id);
-//         }     
-//     }
-//     if (_id > 0) {
-//         inputText.value = musikSammlung[(_id-1)].nummer;
-//     }
-//     displayText();
-// }
-// function nächstesStück () {
-//     let _id = 191;
-//     for (m of musikSammlung){
-//         if (String(m.nummer) === String(inputText.value)) {
-//             _id = parseInt(m.id);
-//         }        
-//     }
-//     if (_id < 191) {
-//         inputText.value = musikSammlung[(_id+1)].nummer;
-//     }
-//     displayText();
-// }
-
+document.addEventListener("touchend", startInput);
+document.addEventListener("mousedown", startInput);
 
 function startInput() {
     musikStueckAngezeigt = false;
@@ -244,11 +189,6 @@ function startInput() {
     outputTitel.style.color = "black";
     outputTonart.style.color = "black";
     outputText.style.color = "black";
-
-    pfeilLinks.style.backgroundColor="white";
-    pfeilRechts.style.backgroundColor="White";
-    pfeilLinks.textContent="";
-    pfeilRechts.textContent="";
 }
 
 if ('serviceworker' in navigator) {

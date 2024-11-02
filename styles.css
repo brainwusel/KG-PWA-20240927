@@ -50,37 +50,9 @@ body, html {
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
-    padding: 20px;
     text-align: center;
     background-color: white;
 }
-
-.pfeilLinks {
-    height: 100%;
-    width: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.containerOutputText {
-    height: 100%;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.ouputText {
-    padding-bottom: 2%;
-}
-.pfeilRechts {
-    height: 100%;
-    width: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 
 .inputText {
     width: 100%;
