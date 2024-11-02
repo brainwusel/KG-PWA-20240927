@@ -182,10 +182,7 @@ containerOutputText.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-pfeilLinks.addEventListener("touchend", () => {
-    alert("<<<");
-    vorherigesStück();
-});
+pfeilLinks.addEventListener("touchend", vorherigesStück);
 pfeilLinks.addEventListener("mousedown", vorherigesStück);
 
 pfeilRechts.addEventListener("touchend", nächstesStück);
