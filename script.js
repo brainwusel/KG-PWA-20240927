@@ -176,8 +176,41 @@ function displayText() {
 
 containerOutputText.addEventListener("touchend", startInput);
 containerOutputText.addEventListener("mousedown", startInput);
+
 inputText.addEventListener("touchend", startInput);
 inputText.addEventListener("mousedown", startInput);
+
+pfeilLinks.addEventListener("touchend", vorherigesStück);
+pfeilLinks.addEventListener("mousedown", vorherigesStück);
+
+pfeilRechts.addEventListener("touchend", nächstesStück);
+pfeilRechts.addEventListener("mousedown", nächstesStück);
+
+function vorherigesStück () {
+    let _id = 0;
+    for (m of musikSammlung){
+        if (String(m.nummer) === String(inputText.value)) {
+            _id = parseInt(m.id);
+        }          
+    }
+    if (_id > 0) {
+        inputText.value = musikSammlung[(_id-1)].nummer;
+    }
+    displayText();
+}
+function nächstesStück () {
+    let _id = 191;
+    for (m of musikSammlung){
+        if (String(m.nummer) === String(inputText.value)) {
+            _id = parseInt(m.id);
+        }          
+    }
+    if (_id < 191) {
+        inputText.value = musikSammlung[(_id+1)].nummer;
+    }
+    displayText();
+}
+
 
 function startInput() {
     musikStueckAngezeigt = false;
