@@ -148,16 +148,15 @@ function displayText() {
     if (inputText.value) { 
         outputText.textContent = inputText.value;
         let fontGroesse = 1;
-
         do {
             fontGroesse = fontGroesse + 1;
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
-            outputText.style.hyphens = "auto";
+           // outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
         } while((outputText.clientHeight < containerOutputText.clientHeight) & (outputText.clientWidth <= containerOutputText.clientWidth))           
-        fontGroesse = fontGroesse - 0;
+        fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
 
@@ -178,7 +177,6 @@ function displayText() {
 
 containerOutputText.addEventListener("touchend", startInput);
 containerOutputText.addEventListener("mousedown", startInput);
-
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
