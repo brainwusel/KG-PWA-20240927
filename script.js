@@ -196,7 +196,7 @@ function vorherigesStück () {
     if (_id > 0) {
         inputText.value = musikSammlung[(_id-1)].nummer;
     }
-    for (i = 0; i = i + 1; i = 100000){};
+    alert("oK");
     displayText();
 }
 function nächstesStück () {
@@ -209,7 +209,7 @@ function nächstesStück () {
     if (_id < 191) {
         inputText.value = musikSammlung[(_id+1)].nummer;
     }
-    for (i = 0; i = i + 1; i = 100000){};
+    alert("oK");
     displayText();
 }
 
