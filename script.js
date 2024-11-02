@@ -13,6 +13,8 @@ const outputText = document.getElementById("outputText");
 
 let musikStueckAngezeigt = false
 
+let touchZähler = 0;
+
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
     this.nummer = nummer;
@@ -186,7 +188,8 @@ pfeilLinks.addEventListener("mousedown", vorherigesStück);
 pfeilRechts.addEventListener("touchend", nächstesStück);
 pfeilRechts.addEventListener("mousedown", nächstesStück);
 
-function vorherigesStück () {
+function vorherigesStück (event) {
+    for (i=0;i<1000000;i++){};
     let _id = 0;
     for (m of musikSammlung){
         if (String(m.nummer) === String(inputText.value)) {
@@ -196,10 +199,10 @@ function vorherigesStück () {
     if (_id > 0) {
         inputText.value = musikSammlung[(_id-1)].nummer;
     }
-    alert("oK");
     displayText();
 }
 function nächstesStück () {
+    for (i=0;i<1000000;i++){};
     let _id = 191;
     for (m of musikSammlung){
         if (String(m.nummer) === String(inputText.value)) {
@@ -209,7 +212,6 @@ function nächstesStück () {
     if (_id < 191) {
         inputText.value = musikSammlung[(_id+1)].nummer;
     }
-    alert("oK");
     displayText();
 }
 
