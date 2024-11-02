@@ -55,9 +55,33 @@ body, html {
     background-color: white;
 }
 
+.pfeilLinks {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerOutputText {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .ouputText {
     hyphens: auto;
+    padding-bottom: 2%;
 }
+.pfeilRechts {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 .inputText {
     width: 100%;

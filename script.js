@@ -6,6 +6,9 @@ const outputTitel = document.getElementById("outputTitel");
 const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
+const containerOutputText = document.getElementById("containerOutputText");
+const pfeilRechts = document.getElementById("pfeilRechts");
+const pfeilLinks = document.getElementById("pfeilLinks");
 const outputText = document.getElementById("outputText");
 
 let musikStueckAngezeigt = false
@@ -53,6 +56,8 @@ function endInput(e) {
 }
 
 function displayText() {  
+
+    musikStueckAngezeigt = false;
     
     containerGesamt.hidden=false;
     containerOben.hidden=false;
@@ -141,35 +146,38 @@ function displayText() {
     if (inputText.value) { 
         outputText.textContent = inputText.value;
         let fontGroesse = 1;
-        if (musikStueckAngezeigt === true) {
-            do {
-                fontGroesse = fontGroesse + 1;
-                outputText.style.fontSize = `${fontGroesse}px`;
-                outputText.style.fontFamily = "Times";
-                outputText.style.overflowWrap = "normal";
-                outputText.style.hyphens = "auto";
-                outputText.textContent = inputText.value;
-            } while((outputText.clientHeight < containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
-            fontGroesse = fontGroesse - 1;
-        }
-        if (musikStueckAngezeigt === false) {
-            do {
-                  fontGroesse = fontGroesse + 1;
-                outputText.style.fontSize = `${fontGroesse}px`;
-                outputText.style.fontFamily = "Times";
-                outputText.style.overflowWrap = "normal";
-                outputText.style.hyphens = "auto";
-                outputText.textContent = inputText.value;
-            } while((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))           
-            fontGroesse = fontGroesse - 2;
-        }
+
+        do {
+            fontGroesse = fontGroesse + 1;
+            outputText.style.fontSize = `${fontGroesse}px`;
+            outputText.style.fontFamily = "Times";
+            outputText.style.overflowWrap = "normal";
+            outputText.style.hyphens = "auto";
+            outputText.textContent = inputText.value;
+        } while((outputText.clientHeight < containerOutputText.clientHeight) & (outputText.clientWidth <= containerOutputText.clientWidth))           
+        fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
+
+        if (musikStueckAngezeigt === true) {
+            pfeilLinks.style.backgroundColor="lightgrey";
+            pfeilRechts.style.backgroundColor="lightgrey";
+            pfeilLinks.textContent="<";
+            pfeilRechts.textContent=">";
+        }
+        if (musikStueckAngezeigt === false) {
+            pfeilLinks.style.backgroundColor="white";
+            pfeilRechts.style.backgroundColor="White";
+            pfeilLinks.textContent="";
+            pfeilRechts.textContent="";
+        }
     }
 }
 
-document.addEventListener("touchend", startInput);
-document.addEventListener("mousedown", startInput);
+containerOutputText.addEventListener("touchend", startInput);
+containerOutputText.addEventListener("mousedown", startInput);
+inputText.addEventListener("touchend", startInput);
+inputText.addEventListener("mousedown", startInput);
 
 function startInput() {
     musikStueckAngezeigt = false;
@@ -187,6 +195,7 @@ function startInput() {
     outputText.textContent="";
     outputTitel.textContent="";
     outputTonart.textContent="";
+
     inputText.value="";
     inputText.focus();
     inputText.inputMode="numeric";
@@ -202,6 +211,11 @@ function startInput() {
     outputTitel.style.color = "black";
     outputTonart.style.color = "black";
     outputText.style.color = "black";
+
+    pfeilLinks.style.backgroundColor="white";
+    pfeilRechts.style.backgroundColor="White";
+    pfeilLinks.textContent="";
+    pfeilRechts.textContent="";
 }
 
 if ('serviceworker' in navigator) {
