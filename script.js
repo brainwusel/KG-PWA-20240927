@@ -44,7 +44,7 @@ inputText.addEventListener("keydown", endInput);
 function endInput(e) {
     inputText.value = String(inputText.value).toUpperCase();
     if (e.code === "Space") {
-        inputText.inputMode = "text"
+        inputText.inputMode = "text";
     }
     if (e.code === "Enter"){
         if (inputText.value === "T"){
@@ -53,6 +53,19 @@ function endInput(e) {
         if (String(inputText.value).startsWith("TT")){
             inputText.value = "3 x TUSCH!";
         }
+        if (inputText.value === "H"){
+             inputText.value = "Happy Birthday";
+        }
+        if (inputText.value === "P"){
+            inputText.value = "3";
+       }
+       if (inputText.value === "B"){
+        inputText.value = "68";
+        }
+        if (inputText.value === "J"){
+        inputText.value = "33";
+        }
+
         inputText.hidden=true;        
         displayText();
     }
@@ -84,12 +97,12 @@ function displayText() {
 
     inputText.value = String(inputText.value).trim();
 
-    if (inputText.value.charAt(0) === " " || inputText.value === ""){
+    if (inputText.value === " " || inputText.value === ""){
         inputText.value="KG Blau-Weiß Fischenich";
     }
 
     for (m of musikSammlung) {
-        if (String(m.nummer) === String(inputText.value)) {
+        if (String(m.nummer) === String(inputText.value)){
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
