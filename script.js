@@ -189,7 +189,10 @@ pfeilRechts.addEventListener("touchend", nächstesStück);
 pfeilRechts.addEventListener("mousedown", nächstesStück);
 
 function vorherigesStück (event) {
-    for (i=0;i<1000000;i++){};
+    let w = 0
+    for (i=0;i<100000000;i++){
+        w = Math.sin(Math.sqrt(i));
+    };
     let _id = 0;
     for (m of musikSammlung){
         if (String(m.nummer) === String(inputText.value)) {
