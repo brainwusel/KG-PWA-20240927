@@ -177,8 +177,8 @@ function displayText() {
 containerOutputText.addEventListener("touchend", startInput);
 containerOutputText.addEventListener("mousedown", startInput);
 
-containerOben.addEventListener("touchend", startInput);
-containerOben.addEventListener("mousedown", startInput);
+containerTitel.addEventListener("touchend", startInput);
+containerTitel.addEventListener("mousedown", startInput);
 
 pfeilLinks.addEventListener("touchend", vorherigesStück);
 pfeilLinks.addEventListener("mousedown", vorherigesStück);
