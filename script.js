@@ -58,12 +58,12 @@ function endInput(e) {
         }
         if (inputText.value === "P"){
             inputText.value = "3";
-       }
-       if (inputText.value === "B"){
-        inputText.value = "68";
+        }
+        if (inputText.value === "B"){
+            inputText.value = "68";
         }
         if (inputText.value === "J"){
-        inputText.value = "33";
+            inputText.value = "33";
         }
 
         inputText.hidden=true;        
@@ -101,8 +101,27 @@ function displayText() {
         inputText.value="KG Blau-Weiß Fischenich";
     }
 
+    const msFilterNummer = musikSammlung.filter((m) => {
+        return String(m.nummer) === String(inputText.value)
+    });
+
+    if (msFilterNummer.length === 0) {
+        const msFilterTitel = musikSammlung.filter((m) => {
+            return m.titel.toUpperCase().indexOf(inputText.value) !== -1
+        });
+        for (m of musikSammlung){
+            if (m.titel.toUpperCase().indexOf(inputText.value) !== -1){
+                inputText.value = m.nummer;
+                if (m.nummer === "Anhang"){
+                    inputText.value = m.titel.toUpperCase();
+                }
+                break;
+            }
+        }
+    }
+
     for (m of musikSammlung) {
-        if (String(m.nummer) === String(inputText.value)){
+        if (String(m.nummer) === String(inputText.value)) {
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
