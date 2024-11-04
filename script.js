@@ -28,6 +28,7 @@ inputText.addEventListener("keydown", endInput);
 document.addEventListener("mousedown", startInput);
 document.addEventListener("keydown", rechtsLinks);
 document.addEventListener("touchmove", (event) => {
+    alert("touchmove");
     let touches = event.changedTouches;
     let firstTouch = touches[0];
     let lastTouch = touches[touches.length - 1];
