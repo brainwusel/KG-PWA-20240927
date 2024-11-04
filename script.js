@@ -104,7 +104,19 @@ function endInput(e) {
 
 document.addEventListener("keydown", rechtsLinks);
 
+document.addEventListener("touchmove", rechtsLinks);
+
 function rechtsLinks(e){
+
+    alert("rechtsLinks: "+e);
+
+    if (e.changedTouches[0].x > e.changedTouches[e.changedTouches.length - 1].x){
+        alert("move nach links");
+    }
+
+    if (e.changedTouches[0].x < e.changedTouches[e.changedTouches.length - 1].x){
+        alert("move nach rechts");
+    }
 
     if (e.code === "ArrowRight"){
         for (m of msFilterTitel){
@@ -168,7 +180,7 @@ function displayText() {
     inputText.value = String(inputText.value).trimEnd();
 
     for (m of musikSammlung) {
-        if (String(m.nummer) === String(inputText.value)) {
+        if (String(m.nummer).toUpperCase() === String(inputText.value).toUpperCase()) {
             if (String(m.mappe).startsWith("gelb")){
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
