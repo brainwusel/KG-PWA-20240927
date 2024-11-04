@@ -47,11 +47,10 @@ async function musikSammlungErstellen () {
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
-    // alert(e.code);
+
     inputText.value = String(inputText.value).toUpperCase();
-    if(String(inputText.value).startsWith(" ")) {
-        inputText.value = "." + String(inputText.value).trimStart();
-    }
+
+    
     if (e.code === "Space") {
         inputText.inputMode = "text";
     }
@@ -94,8 +93,6 @@ function endInput(e) {
                 break;
             }
         }
-
-
         inputText.hidden=true;        
         displayText();
     }
