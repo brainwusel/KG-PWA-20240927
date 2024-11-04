@@ -82,20 +82,21 @@ function displayText() {
     outputTitel.hidden=false;
     outputTonart.hidden=false;
     inputText.hidden=true;
-
     outputTitel.textContent = "";
     outputTitel.style.color = "black";
     outputTitel.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
-
     outputTonart.textContent = "";
     outputTonart.style.color = "black";
     outputTonart.style.backgroundColor = "white";
     containerTonart.style.backgroundColor = "white";
-
     outputText.textContent = "";
 
-    inputText.value = String(inputText.value).trim();
+    inputText.value = String(inputText.value).trimEnd();
+
+    if (String(inputText.value).startsWith(" ")){
+        inputText.value = "." + String(inputText.value).trim();
+    }
 
     if (inputText.value === " " || inputText.value === ""){
         inputText.value="KG Blau-Weiß Fischenich";
