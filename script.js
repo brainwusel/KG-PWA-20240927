@@ -1,3 +1,5 @@
+const e = require("express");
+
 const inputText = document.getElementById('inputText');
 const containerGesamt = document.getElementById("containerGesamt");
 const containerOben = document.getElementById("containerOben");
@@ -108,13 +110,11 @@ document.addEventListener("touchmove", rechtsLinks);
 
 function rechtsLinks(e){
 
-    alert("rechtsLinks: "+e);
-
-    if (e.changedTouches[0].x > e.changedTouches[e.changedTouches.length - 1].x){
+    if (e.changedTouches[0].pageX > e.changedTouches[e.changedTouches.length - 1].pageX){
         alert("move nach links");
     }
 
-    if (e.changedTouches[0].x < e.changedTouches[e.changedTouches.length - 1].x){
+    if (e.changedTouches[0].pageX < e.changedTouches[e.changedTouches.length - 1].pageX){
         alert("move nach rechts");
     }
 
@@ -133,7 +133,6 @@ function rechtsLinks(e){
             }  
         }
     }
-
     if (e.code === "ArrowLeft"){
         for (m of msFilterTitel){
             let index = msFilterTitel.indexOf(m);
@@ -251,10 +250,16 @@ function displayText() {
     }
 }
 
-document.addEventListener("touchend", startInput);
+document.addEventListener("touchmove", (e) => {
+    if (e.changedTouches[0].pageY < e.changedTouches[e.changedTouches.lenght - 1].pageY){
+        startInput();
+    }
 document.addEventListener("mousedown", startInput);
 
 function startInput() {
+
+    
+
     containerGesamt.hidden=true;
     containerOben.hidden=true;
     containerTitel.hidden=true;
