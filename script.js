@@ -11,8 +11,6 @@ let enterCheck = false;
 let rechtsPfeil = false;
 let linksPfeil = false;
 
-let touchZähler = 0;
-
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
     this.nummer = nummer;
@@ -24,6 +22,20 @@ function MusikStueck (id,nummer,titel,tonart,mappe) {
 let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
+
+inputText.addEventListener("keydown", endInput);
+//document.addEventListener("touchend", startInput);
+document.addEventListener("mousedown", startInput);
+document.addEventListener("keydown", rechtsLinks);
+document.addEventListener("touchmove", (event) => {
+    let touches = event.changedTouches;
+    let firstTouch = touches[0];
+    let lastTouch = touches[touches.length - 1];
+    if (firstTouch.pageX < lastTouch.pageX){alert("nach rechts")};
+    if (firstTouch.pageX > lastTouch.pageX){alert("nach links")};
+    if (firstTouch.pageY < lastTouch.pageY){alert("nach oben")};
+    if (firstTouch.pageY > lastTouch.pageY){alert("nach unten")};  
+});
 
 async function getText (file) {
     let myText = "";
@@ -44,22 +56,17 @@ async function musikSammlungErstellen () {
     musikSammlung = _musikSammlung;
 }
 
-inputText.addEventListener("keydown", endInput);
-
 function endInput(e) {
-
     inputText.value = String(inputText.value).toUpperCase();
-
-    
     if (e.code === "Space") {
         inputText.inputMode = "text";
     }
     if (e.code === "Enter"){
         if (inputText.value === "T"){
-            inputText.value = "1 x TUSCH!";
+            inputText.value = "1 x TUSCH";
         }
         if (String(inputText.value).startsWith("TT")){
-            inputText.value = "3 x TUSCH!";
+            inputText.value = "3 x TUSCH";
         }
         if (inputText.value === "H"){
              inputText.value = "Happy Birthday";
@@ -76,11 +83,9 @@ function endInput(e) {
         if (inputText.value === "K"){
             inputText.value = "KG Blau-Weiß Fischenich";            
         }
-
         msFilterNummer = musikSammlung.filter((m) => {
             return String(m.nummer) === String(inputText.value)
         });
-    
         if (msFilterNummer.length === 0) {
             msFilterTitel = musikSammlung.filter((m) => {
                 return m.titel.toUpperCase().indexOf(inputText.value) !== -1
@@ -96,12 +101,8 @@ function endInput(e) {
         inputText.hidden=true;        
         displayText();
     }
-    
 }
 
-document.addEventListener("keydown", rechtsLinks);
-
-document.addEventListener("touchmove", rechtsLinks);
 
 function rechtsLinks(e){
 
@@ -238,8 +239,6 @@ function displayText() {
     }
 }
 
-document.addEventListener("touchend", startInput);
-document.addEventListener("mousedown", startInput);
 
 function startInput() {
     containerGesamt.hidden=true;
