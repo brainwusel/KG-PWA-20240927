@@ -7,6 +7,9 @@ const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
+let enterCheck = false;
+let rechtsPfeil = false;
+let linksPfeil = false;
 
 let touchZähler = 0;
 
@@ -18,7 +21,9 @@ function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.mappe = mappe;
 }
 
-let musikSammlung = [];
+let musikSammlung = [MusikStueck];
+let msFilterNummer = [MusikStueck];
+let msFilterTitel = [MusikStueck];
 
 async function getText (file) {
     let myText = "";
@@ -42,7 +47,11 @@ async function musikSammlungErstellen () {
 inputText.addEventListener("keydown", endInput);
 
 function endInput(e) {
+    // alert(e.code);
     inputText.value = String(inputText.value).toUpperCase();
+    if(String(inputText.value).startsWith(" ")) {
+        inputText.value = "." + String(inputText.value).trimStart();
+    }
     if (e.code === "Space") {
         inputText.inputMode = "text";
     }
@@ -64,12 +73,76 @@ function endInput(e) {
         }
         if (inputText.value === "J"){
             inputText.value = "33";
+        }        
+        if (inputText.value === "K"){
+            inputText.value = "KG Blau-Weiß Fischenich";            
         }
+
+        msFilterNummer = musikSammlung.filter((m) => {
+            return String(m.nummer) === String(inputText.value)
+        });
+    
+        if (msFilterNummer.length === 0) {
+            msFilterTitel = musikSammlung.filter((m) => {
+                return m.titel.toUpperCase().indexOf(inputText.value) !== -1
+            });
+            for (m of msFilterTitel){
+                inputText.value = m.nummer;
+                if (m.nummer === "Anhang"){
+                    inputText.value = m.titel.toUpperCase();
+                }
+                break;
+            }
+        }
+
 
         inputText.hidden=true;        
         displayText();
     }
+    
 }
+
+document.addEventListener("keydown", rechtsLinks);
+
+function rechtsLinks(e){
+
+    if (e.code === "ArrowRight"){
+        for (m of msFilterTitel){
+            let index = msFilterTitel.indexOf(m);
+            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                if (index < (msFilterTitel.length - 1)){
+                    inputText.value = msFilterTitel[index + 1].nummer;
+                    if (inputText.value === "Anhang"){
+                        inputText.value = msFilterTitel[index + 1].titel;
+                    };
+                    displayText();
+                    break;
+                }
+            }  
+        }
+    }
+
+    if (e.code === "ArrowLeft"){
+        for (m of msFilterTitel){
+            let index = msFilterTitel.indexOf(m);
+            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                if (index > 0){
+                    inputText.value = msFilterTitel[index - 1].nummer;
+                    if (inputText.value === "Anhang"){
+                        inputText.value = msFilterTitel[index - 1].titel;
+                    };
+                    displayText();
+                    break;
+                }
+            }  
+        }
+    }
+}
+
+function pfeilLinks (msAtDisplay){
+    
+}
+
 
 function displayText() {  
     
@@ -93,33 +166,6 @@ function displayText() {
     outputText.textContent = "";
 
     inputText.value = String(inputText.value).trimEnd();
-
-    if (String(inputText.value).startsWith(" ")){
-        inputText.value = "." + String(inputText.value).trim();
-    }
-
-    if (inputText.value === " " || inputText.value === ""){
-        inputText.value="KG Blau-Weiß Fischenich";
-    }
-
-    const msFilterNummer = musikSammlung.filter((m) => {
-        return String(m.nummer) === String(inputText.value)
-    });
-
-    if (msFilterNummer.length === 0) {
-        const msFilterTitel = musikSammlung.filter((m) => {
-            return m.titel.toUpperCase().indexOf(inputText.value) !== -1
-        });
-        for (m of musikSammlung){
-            if (m.titel.toUpperCase().indexOf(inputText.value) !== -1){
-                inputText.value = m.nummer;
-                if (m.nummer === "Anhang"){
-                    inputText.value = m.titel.toUpperCase();
-                }
-                break;
-            }
-        }
-    }
 
     for (m of musikSammlung) {
         if (String(m.nummer) === String(inputText.value)) {
