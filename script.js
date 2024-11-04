@@ -23,19 +23,18 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
 inputText.addEventListener("keydown", endInput);
 //document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 document.addEventListener("keydown", rechtsLinks);
-document.addEventListener("touchmove", (event) => {
-    alert("touchmove");
-    let touches = event.changedTouches;
-    let firstTouch = touches[0];
-    let lastTouch = touches[touches.length - 1];
-    if (firstTouch.pageX < lastTouch.pageX){alert("nach rechts")};
-    if (firstTouch.pageX > lastTouch.pageX){alert("nach links")};
-    if (firstTouch.pageY < lastTouch.pageY){alert("nach oben")};
-    if (firstTouch.pageY > lastTouch.pageY){alert("nach unten")};  
+document.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+    alert(touchStartX);
 });
 
 async function getText (file) {
