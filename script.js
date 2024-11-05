@@ -25,6 +25,11 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
 inputText.addEventListener("keydown", endInput);
 // document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
