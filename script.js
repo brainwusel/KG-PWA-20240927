@@ -85,11 +85,12 @@ async function musikSammlungErstellen () {
 }
 
 function endInput(e) {
-    inputText.value = String(inputText.value).toUpperCase();
+    inputText.value = String(inputText.value).toUpperCase()
     if (e.code === "Space") {
         inputText.inputMode = "text";
     }
     if (e.code === "Enter"){
+        inputText.value = String(inputText.value).trim();
         if (inputText.value === "T"){
             inputText.value = "1 x TUSCH";
         }
@@ -126,7 +127,6 @@ function endInput(e) {
                 break;
             }
         }
-        inputText.value = String(inputText.value).trim();
         inputText.hidden=true;        
         displayText();
     }
