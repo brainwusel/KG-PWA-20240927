@@ -132,38 +132,38 @@ function endInput(e) {
     }
 }
 
-function rechtsLinks(r){
-    if (r === "rechts"){
-        for (m of msFilterTitel){
-            let index = msFilterTitel.indexOf(m);
-            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-                if (index < (msFilterTitel.length - 1)){
-                    inputText.value = msFilterTitel[index + 1].nummer;
-                    if (inputText.value === "Anhang"){
-                        inputText.value = msFilterTitel[index + 1].titel;
-                    };
-                    displayText();
-                    break;
-                }
-            }  
-        }
-    }
-    if (r === "links"){
-        for (m of msFilterTitel){
-            let index = msFilterTitel.indexOf(m);
-            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-                if (index > 0){
-                    inputText.value = msFilterTitel[index - 1].nummer;
-                    if (inputText.value === "Anhang"){
-                        inputText.value = msFilterTitel[index - 1].titel;
-                    };
-                    displayText();
-                    break;
-                }
-            }  
-        }
-    }
-}
+// function rechtsLinks(r){
+//     if (r === "rechts"){
+//         for (m of msFilterTitel){
+//             let index = msFilterTitel.indexOf(m);
+//             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+//                 if (index < (msFilterTitel.length - 1)){
+//                     inputText.value = msFilterTitel[index + 1].nummer;
+//                     if (inputText.value === "Anhang"){
+//                         inputText.value = msFilterTitel[index + 1].titel;
+//                     };
+//                     displayText();
+//                     break;
+//                 }
+//             }  
+//         }
+//     }
+//     if (r === "links"){
+//         for (m of msFilterTitel){
+//             let index = msFilterTitel.indexOf(m);
+//             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+//                 if (index > 0){
+//                     inputText.value = msFilterTitel[index - 1].nummer;
+//                     if (inputText.value === "Anhang"){
+//                         inputText.value = msFilterTitel[index - 1].titel;
+//                     };
+//                     displayText();
+//                     break;
+//                 }
+//             }  
+//         }
+//     }
+// }
 
 function displayText() {  
     
