@@ -39,6 +39,35 @@ body, html {
     background-color: burlywood;
 }
 
+.containerButtons {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+.links {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    background-color: red;
+}
+
+.space {
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+
+.rechts {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    background-color: green;
+}
+
+
+
 .containerUnten {
     height: 85%;
     width: 100%;

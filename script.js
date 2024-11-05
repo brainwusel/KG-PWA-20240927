@@ -31,38 +31,38 @@ let touchEndX = 0;
 let touchEndY = 0;
 
 inputText.addEventListener("keydown", endInput);
-// document.addEventListener("touchend", startInput);
+document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
 
-document.addEventListener("touchmove", (event) => {
-    let richtung = "";
-    touchesX.push(event.touches[0].clientX);
-    for (i = 1; i < touchesX.length - 1; i++) {
-         touchesX.shift();
-    }
-    touchesY.push(event.touches[0].clientY);
-    for (i = 1; i < touchesY.length - 1; i++) {
-         touchesY.shift();
-    }
-    if (touchesX.length === 2){ 
-        if (touchesX[0]/touchesX[1] < 1.1 && touchesX[0]/touchesX[1] > 0.9 && touchesY[0]/touchesY[1] < 1.1 && touchesY[0]/touchesY[1] > 0.9){
-            inputText.focus();
-            startInput();
-        }
-        if (touchesX[0]/touchesX[1] > 1.1){
-            // alert("nach rechts");
-            richtung = "rechts";
-            rechtsLinks(richtung);
-            touchesX = [];
-        };
-        if (touchesX[0]/touchesX[1] < 0.9){
-            // alert("nach links");
-            richtung = "links";
-            rechtsLinks(richtung);
-            touchesX = [];
-        };
-    }
-});
+// document.addEventListener("touchmove", (event) => {
+//     let richtung = "";
+//     touchesX.push(event.touches[0].clientX);
+//     for (i = 1; i < touchesX.length - 1; i++) {
+//          touchesX.shift();
+//     }
+//     touchesY.push(event.touches[0].clientY);
+//     for (i = 1; i < touchesY.length - 1; i++) {
+//          touchesY.shift();
+//     }
+//     if (touchesX.length === 2){ 
+//         if (touchesX[0]/touchesX[1] < 1.1 && touchesX[0]/touchesX[1] > 0.9 && touchesY[0]/touchesY[1] < 1.1 && touchesY[0]/touchesY[1] > 0.9){
+//             inputText.focus();
+//             startInput();
+//         }
+//         if (touchesX[0]/touchesX[1] > 1.1){
+//             // alert("nach rechts");
+//             richtung = "rechts";
+//             rechtsLinks(richtung);
+//             touchesX = [];
+//         };
+//         if (touchesX[0]/touchesX[1] < 0.9){
+//             // alert("nach links");
+//             richtung = "links";
+//             rechtsLinks(richtung);
+//             touchesX = [];
+//         };
+//     }
+// });
 
 
 async function getText (file) {
