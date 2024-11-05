@@ -10,6 +10,8 @@ const outputText = document.getElementById("outputText");
 let enterCheck = false;
 let rechtsPfeil = false;
 let linksPfeil = false;
+let touchesX = [];
+let touchesY = [];
 
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -24,18 +26,39 @@ let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 
 inputText.addEventListener("keydown", endInput);
-//document.addEventListener("touchend", startInput);
+// document.addEventListener("touchend", startInput);
 document.addEventListener("mousedown", startInput);
-document.addEventListener("keydown", rechtsLinks);
+
 document.addEventListener("touchmove", (event) => {
-    let touches = event.changedTouches;
-    let firstTouch = touches[0];
-    let lastTouch = touches[touches.length - 1];
-    if (firstTouch.pageX < lastTouch.pageX){alert("nach rechts")};
-    if (firstTouch.pageX > lastTouch.pageX){alert("nach links")};
-    if (firstTouch.pageY < lastTouch.pageY){alert("nach oben")};
-    if (firstTouch.pageY > lastTouch.pageY){alert("nach unten")};  
+    let richtung = "";
+    touchesX.push(event.touches[0].clientX);
+    for (i = 1; i < touchesX.length - 1; i++) {
+         touchesX.shift();
+    }
+    touchesY.push(event.touches[0].clientY);
+    for (i = 1; i < touchesY.length - 1; i++) {
+         touchesY.shift();
+    }
+    if (touchesX.length === 2){ 
+        if (touchesX[0]/touchesX[1] < 1.1 && touchesX[0]/touchesX[1] > 0.9 && touchesY[0]/touchesY[1] < 1.1 && touchesY[0]/touchesY[1] > 0.9){
+            inputText.focus();
+            startInput();
+        }
+        if (touchesX[0]/touchesX[1] > 1.1){
+            // alert("nach rechts");
+            richtung = "rechts";
+            rechtsLinks(richtung);
+            touchesX = [];
+        };
+        if (touchesX[0]/touchesX[1] < 0.9){
+            // alert("nach links");
+            richtung = "links";
+            rechtsLinks(richtung);
+            touchesX = [];
+        };
+    }
 });
+
 
 async function getText (file) {
     let myText = "";
@@ -98,15 +121,14 @@ function endInput(e) {
                 break;
             }
         }
+        inputText.value = String(inputText.value).trim();
         inputText.hidden=true;        
         displayText();
     }
 }
 
-
-function rechtsLinks(e){
-
-    if (e.code === "ArrowRight"){
+function rechtsLinks(r){
+    if (r === "rechts"){
         for (m of msFilterTitel){
             let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
@@ -121,8 +143,7 @@ function rechtsLinks(e){
             }  
         }
     }
-
-    if (e.code === "ArrowLeft"){
+    if (r === "links"){
         for (m of msFilterTitel){
             let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
@@ -138,11 +159,6 @@ function rechtsLinks(e){
         }
     }
 }
-
-function pfeilLinks (msAtDisplay){
-    
-}
-
 
 function displayText() {  
     
@@ -238,7 +254,6 @@ function displayText() {
         outputText.textContent = inputText.value;
     }
 }
-
 
 function startInput() {
     containerGesamt.hidden=true;
