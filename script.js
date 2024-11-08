@@ -127,7 +127,6 @@ function endInput(e) {
                 containerButtons.hidden=false;
                 buttonLinks.hidden=false;
                 buttonRechts.hidden=false;
-                buttonLinks.textContent="<";
                 buttonRechts.textContent=">";
             };
             for (m of msFilterTitel){
@@ -162,6 +161,8 @@ function nachRechts(){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
                 if (index < (msFilterTitel.length - 1)){
                     inputText.value = msFilterTitel[index + 1].nummer;
+                    index === msFilterTitel.length-2 ? buttonRechts.textContent = "" : buttonRechts.textContent = ">";
+                    buttonLinks.textContent = "<";
                     if (inputText.value === "Anhang"){
                         inputText.value = msFilterTitel[index + 1].titel;
                     };
@@ -178,6 +179,8 @@ function nachLinks(){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
                 if (index > 0){
                     inputText.value = msFilterTitel[index - 1].nummer;
+                    index === 1 ? buttonLinks.textContent = "" : buttonLinks.textContent = "<";
+                    buttonRechts.textContent = ">";
                     if (inputText.value === "Anhang"){
                         inputText.value = msFilterTitel[index - 1].titel;
                     };
