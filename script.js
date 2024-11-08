@@ -35,8 +35,8 @@ let touchEndX = 0;
 let touchEndY = 0;
 
 inputText.addEventListener("keydown", endInput);
-document.addEventListener("touchend", startInput);
-document.addEventListener("mousedown", startInput);
+// document.addEventListener("touchend", startInput);
+// document.addEventListener("mousedown", startInput);
 
 // document.addEventListener("touchmove", (event) => {
 //     let richtung = "";
@@ -143,38 +143,51 @@ function endInput(e) {
     };
 };
 
-// function rechtsLinks(r){
-//     if (r === "rechts"){
-//         for (m of msFilterTitel){
-//             let index = msFilterTitel.indexOf(m);
-//             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-//                 if (index < (msFilterTitel.length - 1)){
-//                     inputText.value = msFilterTitel[index + 1].nummer;
-//                     if (inputText.value === "Anhang"){
-//                         inputText.value = msFilterTitel[index + 1].titel;
-//                     };
-//                     displayText();
-//                     break;
-//                 }
-//             }  
-//         }
-//     }
-//     if (r === "links"){
-//         for (m of msFilterTitel){
-//             let index = msFilterTitel.indexOf(m);
-//             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-//                 if (index > 0){
-//                     inputText.value = msFilterTitel[index - 1].nummer;
-//                     if (inputText.value === "Anhang"){
-//                         inputText.value = msFilterTitel[index - 1].titel;
-//                     };
-//                     displayText();
-//                     break;
-//                 }
-//             }  
-//         }
-//     }
-// }
+buttonLinks.addEventListener("touchend", nachLinks);
+buttonLinks.addEventListener("mousedown", nachLinks);
+
+buttonRechts.addEventListener("touchend", nachRechts);
+buttonRechts.addEventListener("mousedown", nachRechts);
+
+outputText.addEventListener("touchend",startInput);
+outputText.addEventListener("mousedown", startInput);
+
+outputTitel.addEventListener("touchend", startInput);
+outputTitel.addEventListener("mousedown", startInput);
+
+function nachRechts(){
+    
+        for (m of msFilterTitel){
+            let index = msFilterTitel.indexOf(m);
+            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                if (index < (msFilterTitel.length - 1)){
+                    inputText.value = msFilterTitel[index + 1].nummer;
+                    if (inputText.value === "Anhang"){
+                        inputText.value = msFilterTitel[index + 1].titel;
+                    };
+                    displayText();
+                    break;
+                }
+            }  
+        }
+    }
+
+function nachLinks(){    
+        for (m of msFilterTitel){
+            let index = msFilterTitel.indexOf(m);
+            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                if (index > 0){
+                    inputText.value = msFilterTitel[index - 1].nummer;
+                    if (inputText.value === "Anhang"){
+                        inputText.value = msFilterTitel[index - 1].titel;
+                    };
+                    displayText();
+                    break;
+                }
+            }  
+        }
+    
+}
 
 function displayText() {  
     
