@@ -7,6 +7,10 @@ const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
+const containerButtons = document.getElementById("containerButtons");
+const buttonLinks = document.getElementById("buttonLinks");
+const buttonRechts = document.getElementById("buttonRechts");
+
 let enterCheck = false;
 let rechtsPfeil = false;
 let linksPfeil = false;
@@ -119,18 +123,25 @@ function endInput(e) {
             msFilterTitel = musikSammlung.filter((m) => {
                 return m.titel.toUpperCase().indexOf(inputText.value) !== -1
             });
+            if (msFilterTitel.length > 1){
+                containerButtons.hidden=false;
+                buttonLinks.hidden=false;
+                buttonRechts.hidden=false;
+                buttonLinks.textContent="<";
+                buttonRechts.textContent=">";
+            };
             for (m of msFilterTitel){
                 inputText.value = m.nummer;
                 if (m.nummer === "Anhang"){
                     inputText.value = m.titel.toUpperCase();
                 }
                 break;
-            }
-        }
+            };
+        };
         inputText.hidden=true;        
         displayText();
-    }
-}
+    };
+};
 
 // function rechtsLinks(r){
 //     if (r === "rechts"){
@@ -171,19 +182,28 @@ function displayText() {
     containerOben.hidden=false;
     containerTitel.hidden=false;
     containerTonart.hidden=false;
+
+    containerButtons.hidden=true;
+    buttonLinks.hidden=true;
+    buttonRechts.hidden=true;
+    
     containerUnten.hidden=false;
     outputText.hidden=false;
     outputTitel.hidden=false;
     outputTonart.hidden=false;
+    
     inputText.hidden=true;
+    
     outputTitel.textContent = "";
     outputTitel.style.color = "black";
     outputTitel.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
+    
     outputTonart.textContent = "";
     outputTonart.style.color = "black";
     outputTonart.style.backgroundColor = "white";
     containerTonart.style.backgroundColor = "white";
+    
     outputText.textContent = "";
 
     inputText.value = String(inputText.value).trimEnd();
@@ -270,6 +290,9 @@ function startInput() {
     outputTitel.hidden=true;
     outputTonart.hidden=true;
     inputText.hidden=false;
+
+    buttonLinks.textContent="";
+    buttonRechts.textContent="";
 
     outputText.textContent="";
     outputTitel.textContent="";
