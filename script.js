@@ -86,6 +86,7 @@ async function musikSammlungErstellen () {
         _musikSammlung.push(_musikStueck);
     }
     musikSammlung = _musikSammlung;
+    msFilterTitel = _musikSammlung;
 }
 
 function endInput(e) {
@@ -163,11 +164,11 @@ function nachRechts(){
             let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
                 if (index < (msFilterTitel.length - 1)){
-                    inputText.value = msFilterTitel[index + 1].nummer;
+                    inputText.value = msFilterTitel[index + 1].nummer; 
                     index === msFilterTitel.length-2 ? buttonRechts.textContent = "" : buttonRechts.textContent = ">";
                     buttonLinks.textContent = "<";
-                    if (inputText.value === "Anhang"){
-                        inputText.value = msFilterTitel[index + 1].titel;
+                    if (msFilterTitel[index + 1].nummer === "Anhang"){
+                        inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
                     };
                     displayText();
                     break;
@@ -184,8 +185,8 @@ function nachLinks(){
                     inputText.value = msFilterTitel[index - 1].nummer;
                     index === 1 ? buttonLinks.textContent = "" : buttonLinks.textContent = "<";
                     buttonRechts.textContent = ">";
-                    if (inputText.value === "Anhang"){
-                        inputText.value = msFilterTitel[index - 1].titel;
+                    if (msFilterTitel[index - 1].nummer === "Anhang"){
+                        inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
                     };
                     displayText();
                     break;
@@ -290,7 +291,7 @@ function displayText() {
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
-            outputText.style.hyphens = "auto";
+            // outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
         } while((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
         fontGroesse = fontGroesse - 1;
