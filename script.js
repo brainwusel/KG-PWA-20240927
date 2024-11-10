@@ -133,22 +133,19 @@ function endInput(e) {
                 break;
             };
         };
-        if (msFilterTitel.length > 1){
-            buttonRechts.style.backgroundColor = "green";
-            if (msFilterTitel === musikSammlung){
-                buttonLinks.style.backgroundColor = "lightred";
-                buttonRechts.style.backgroundColor = "lightgreen";
-            }
-        };
+        if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung){
+                buttonRechts.style.backgroundColor = "green";
+                buttonLinks.style.backgroundColor = "red";
+        }
         inputText.hidden=true;        
         displayText();
     };
 };
 
-buttonLinks.addEventListener("touchend", nachLinks);
+buttonLinks.addEventListener("onclick", nachLinks);
 buttonLinks.addEventListener("mousedown", nachLinks);
 
-buttonRechts.addEventListener("touchend", nachRechts);
+buttonRechts.addEventListener("onclick", nachRechts);
 buttonRechts.addEventListener("mousedown", nachRechts);
 
 outputText.addEventListener("touchend",startInput);
@@ -161,40 +158,38 @@ outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
 function nachRechts(){    
+    let index = 0;
         for (m of msFilterTitel){
-            let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                index = msFilterTitel.indexOf(m);
                 if (index < (msFilterTitel.length - 1)){
-                    inputText.value = msFilterTitel[index + 1].nummer; 
-                    index === msFilterTitel.length-2 ? buttonRechts.style.backgroundColor = "white" : buttonRechts.style.backgroundColor = "green";
-                    buttonLinks.style.backgroundColor = "red";
-                    if (msFilterTitel[index + 1].nummer === "Anhang"){
-                        inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
-                    };
-                    displayText();
-                    break;
+                    inputText.value = msFilterTitel[index + 1].nummer;
                 }
-            }  
-        }
-    }
+                if (msFilterTitel[index + 1].nummer === "Anhang"){
+                    inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
+                };
+                displayText();
+                break;
+            }
+        }  
+}
+    
 
-function nachLinks(){    
+function nachLinks(){ 
+    let index = 0;   
         for (m of msFilterTitel){
-            let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                index = msFilterTitel.indexOf(m);
                 if (index > 0){
                     inputText.value = msFilterTitel[index - 1].nummer;
-                    index === 1 ? buttonLinks.style.backgroundColor = "white" : buttonLinks.style.backgroundColor = "red";
-                    buttonRechts.style.backgroundColor = "green";
-                    if (msFilterTitel[index - 1].nummer === "Anhang"){
-                        inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
-                    };
-                    displayText();
-                    break;
-                }
-            }  
-        }
-    
+                }   
+                if (msFilterTitel[index - 1].nummer === "Anhang"){
+                    inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
+                };
+                displayText();
+                break;
+            }
+        }  
 }
 
 function displayText() {  
