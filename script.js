@@ -7,7 +7,7 @@ const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
-const containerButtons = document.getElementById("containerButtons");
+// const containerButtons = document.getElementById("containerButtons");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 
@@ -120,16 +120,11 @@ function endInput(e) {
         msFilterNummer = musikSammlung.filter((m) => {
             return String(m.nummer) === String(inputText.value)
         });
+        msFilterTitel = musikSammlung;
         if (msFilterNummer.length === 0) {
             msFilterTitel = musikSammlung.filter((m) => {
                 return m.titel.toUpperCase().indexOf(inputText.value) !== -1
             });
-            if (msFilterTitel.length > 1){
-                containerButtons.hidden=false;
-                buttonLinks.hidden=false;
-                buttonRechts.hidden=false;
-                buttonRechts.textContent=">";
-            };
             for (m of msFilterTitel){
                 inputText.value = m.nummer;
                 if (m.nummer === "Anhang"){
@@ -137,6 +132,13 @@ function endInput(e) {
                 }
                 break;
             };
+        };
+        if (msFilterTitel.length > 1){
+            buttonRechts.style.backgroundColor = "green";
+            if (msFilterTitel === musikSammlung){
+                buttonLinks.style.backgroundColor = "lightred";
+                buttonRechts.style.backgroundColor = "lightgreen";
+            }
         };
         inputText.hidden=true;        
         displayText();
@@ -158,15 +160,14 @@ containerUnten.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-function nachRechts(){
-    
+function nachRechts(){    
         for (m of msFilterTitel){
             let index = msFilterTitel.indexOf(m);
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
                 if (index < (msFilterTitel.length - 1)){
                     inputText.value = msFilterTitel[index + 1].nummer; 
-                    index === msFilterTitel.length-2 ? buttonRechts.textContent = "" : buttonRechts.textContent = ">";
-                    buttonLinks.textContent = "<";
+                    index === msFilterTitel.length-2 ? buttonRechts.style.backgroundColor = "white" : buttonRechts.style.backgroundColor = "green";
+                    buttonLinks.style.backgroundColor = "red";
                     if (msFilterTitel[index + 1].nummer === "Anhang"){
                         inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
                     };
@@ -183,8 +184,8 @@ function nachLinks(){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
                 if (index > 0){
                     inputText.value = msFilterTitel[index - 1].nummer;
-                    index === 1 ? buttonLinks.textContent = "" : buttonLinks.textContent = "<";
-                    buttonRechts.textContent = ">";
+                    index === 1 ? buttonLinks.style.backgroundColor = "white" : buttonLinks.style.backgroundColor = "red";
+                    buttonRechts.style.backgroundColor = "green";
                     if (msFilterTitel[index - 1].nummer === "Anhang"){
                         inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
                     };
@@ -203,9 +204,9 @@ function displayText() {
     containerTitel.hidden=false;
     containerTonart.hidden=false;
 
-    containerButtons.hidden=true;
-    buttonLinks.hidden=true;
-    buttonRechts.hidden=true;
+    // containerButtons.hidden=true;
+    // buttonLinks.hidden=true;
+    // buttonRechts.hidden=true;
     
     containerUnten.hidden=false;
     outputText.hidden=false;
@@ -311,8 +312,8 @@ function startInput() {
     outputTonart.hidden=true;
     inputText.hidden=false;
 
-    buttonLinks.textContent="";
-    buttonRechts.textContent="";
+    buttonLinks.style.backgroundColor = "white";
+    buttonRechts.style.backgroundColor = "white";
 
     outputText.textContent="";
     outputTitel.textContent="";
@@ -333,6 +334,8 @@ function startInput() {
     outputTitel.style.color = "black";
     outputTonart.style.color = "black";
     outputText.style.color = "black";
+
+    msFilterTitel = musikSammlung;
 }
 
 if ('serviceworker' in navigator) {
