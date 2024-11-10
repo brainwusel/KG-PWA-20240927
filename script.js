@@ -157,7 +157,10 @@ containerUnten.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-function nachRechts(){    
+function nachRechts(){ 
+    if (msFilterTitel.length === 1){
+        msFilterTitel = musikSammlung;
+    }   
     let index = 0;
         for (m of msFilterTitel){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
@@ -176,6 +179,9 @@ function nachRechts(){
     
 
 function nachLinks(){ 
+    if (msFilterTitel.length === 1){
+        msFilterTitel = musikSammlung;
+    }   
     let index = 0;   
         for (m of msFilterTitel){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){

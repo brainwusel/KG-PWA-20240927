@@ -49,7 +49,7 @@ body, html {
 .buttonLinks {
     width: 50%;
     display: flex;
-    background-color: lightcoral;
+    background-color: white;
     border-color: red;
 }
 
@@ -61,7 +61,7 @@ body, html {
 .buttonRechts {
     width: 50%;
     display: flex;
-    background-color: lightgreen;
+    background-color: white;
     border-color: green;
     font-size: 2rem;
 } 
