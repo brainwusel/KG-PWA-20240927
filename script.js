@@ -157,24 +157,24 @@ containerUnten.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-function nachRechts(){ 
+function nachRechts(){
     if (msFilterTitel.length === 1){
         msFilterTitel = musikSammlung;
-    }   
-    let index = 0;
-        for (m of msFilterTitel){
-            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-                index = msFilterTitel.indexOf(m);
-                if (index < (msFilterTitel.length - 1)){
-                    inputText.value = msFilterTitel[index + 1].nummer;
-                }
-                if (msFilterTitel[index + 1].nummer === "Anhang"){
-                    inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
-                };
-                displayText();
-                break;
+    } 
+    let index = 0;   
+    for (m of msFilterTitel){
+        if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+            index = msFilterTitel.indexOf(m);
+            if (index < (msFilterTitel.length - 1)){
+                inputText.value = msFilterTitel[index + 1].nummer;
             }
-        }  
+            if (msFilterTitel[index + 1].nummer === "Anhang"){
+                inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
+            };
+            displayText();
+            break;
+        }
+    }  
 }
     
 
