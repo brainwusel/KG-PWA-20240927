@@ -285,9 +285,10 @@ function nachRechts(){
             };
             displayText();
             break;
-        } else {
-        	alert("nix");
         }
+    }
+    if (index === 0){
+        alert("nix");
     }
     if (buttonRechts.style.backgroundColor !== "green"){
         buttonSpace.textContent = " ";
