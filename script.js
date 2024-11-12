@@ -107,6 +107,7 @@ function endInput(e) {
                 return m.titel.toUpperCase().indexOf(inputText.value) !== -1 // Suchfunktion
             });
             buttonSpace.textContent = "..."+inputText.value+"...";
+            buttonSpace.style.display = "flex";
             for (m of msFilterTitel){
                 inputText.value = m.nummer;
                 if (m.nummer === "Anhang"){
@@ -120,6 +121,7 @@ function endInput(e) {
                 buttonLinks.style.backgroundColor = "red";
         } else if (msFilterTitel.length !== 1) {
             buttonSpace.textContent = " ";
+            buttonSpace.style.display = "none";
         }
         inputText.hidden=true;        
         displayText();
@@ -246,6 +248,7 @@ function startInput() {
     outputTonart.textContent="";
 
     buttonSpace.textContent = " ";
+    buttonSpace.style.display = "none";
 
     inputText.value="";
     inputText.focus();
@@ -286,6 +289,7 @@ function nachRechts(){
     }
     if (buttonRechts.style.backgroundColor !== "green"){
         buttonSpace.textContent = " ";
+        buttonSpace.style.display = "none";
     }  
 }
     
@@ -310,6 +314,7 @@ function nachLinks(){
         }  
         if (buttonLechts.style.backgroundColor !== "red"){
             buttonSpace.textContent = " ";
+            buttonSpace.style.display = "none";
         }  
 }
 

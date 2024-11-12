@@ -49,7 +49,7 @@ body, html {
 } 
 
 .buttonLinks {
-    width: 45%;
+    width: 40%;
     display: flex;
     background-color: white;
     border-color: red;
@@ -57,16 +57,16 @@ body, html {
 
  .buttonSpace {
     width: 20%;
-    display:flex;
-    margin-left: 43rem;
-    font-size: 1rem;
+    display:none;
+    font-size: 2rem;
     background-color: white;
+    border-color: white;
     justify-content: center;
     align-self: center;
 } 
 
 .buttonRechts {
-    width: 45%;
+    width: 40%;
     display: flex;
     background-color: white;
     border-color: green;
