@@ -312,7 +312,7 @@ function nachLinks(){
                 break;
             }
         }  
-        if (buttonLechts.style.backgroundColor !== "red"){
+        if (buttonRechts.style.backgroundColor !== "red"){
             buttonSpace.textContent = " ";
             buttonSpace.style.display = "none";
         }  
