@@ -7,16 +7,12 @@ const containerTonart = document.getElementById("containerTonart");
 const outputTonart = document.getElementById("outputTonart");
 const containerUnten = document.getElementById("containerUnten");
 const outputText = document.getElementById("outputText");
-// const containerButtons = document.getElementById("containerButtons");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 
-let enterCheck = false;
 let rechtsPfeil = false;
 let linksPfeil = false;
-let touchesX = [];
-let touchesY = [];
 
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
@@ -30,44 +26,25 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
+
 
 inputText.addEventListener("keydown", endInput);
-// document.addEventListener("touchend", startInput);
-// document.addEventListener("mousedown", startInput);
 
-// document.addEventListener("touchmove", (event) => {
-//     let richtung = "";
-//     touchesX.push(event.touches[0].clientX);
-//     for (i = 1; i < touchesX.length - 1; i++) {
-//          touchesX.shift();
-//     }
-//     touchesY.push(event.touches[0].clientY);
-//     for (i = 1; i < touchesY.length - 1; i++) {
-//          touchesY.shift();
-//     }
-//     if (touchesX.length === 2){ 
-//         if (touchesX[0]/touchesX[1] < 1.1 && touchesX[0]/touchesX[1] > 0.9 && touchesY[0]/touchesY[1] < 1.1 && touchesY[0]/touchesY[1] > 0.9){
-//             inputText.focus();
-//             startInput();
-//         }
-//         if (touchesX[0]/touchesX[1] > 1.1){
-//             // alert("nach rechts");
-//             richtung = "rechts";
-//             rechtsLinks(richtung);
-//             touchesX = [];
-//         };
-//         if (touchesX[0]/touchesX[1] < 0.9){
-//             // alert("nach links");
-//             richtung = "links";
-//             rechtsLinks(richtung);
-//             touchesX = [];
-//         };
-//     }
-// });
+buttonLinks.addEventListener("onclick", nachLinks);
+buttonLinks.addEventListener("mousedown", nachLinks);
+
+buttonRechts.addEventListener("onclick", nachRechts);
+buttonRechts.addEventListener("mousedown", nachRechts);
+
+outputText.addEventListener("touchend",startInput);
+outputText.addEventListener("mousedown", startInput);
+
+containerUnten.addEventListener("touchend",startInput);
+containerUnten.addEventListener("mousedown", startInput);
+
+outputTitel.addEventListener("touchend", startInput);
+outputTitel.addEventListener("mousedown", startInput);
+
 
 
 async function getText (file) {
@@ -149,78 +126,12 @@ function endInput(e) {
     };
 };
 
-buttonLinks.addEventListener("onclick", nachLinks);
-buttonLinks.addEventListener("mousedown", nachLinks);
-
-buttonRechts.addEventListener("onclick", nachRechts);
-buttonRechts.addEventListener("mousedown", nachRechts);
-
-outputText.addEventListener("touchend",startInput);
-outputText.addEventListener("mousedown", startInput);
-
-containerUnten.addEventListener("touchend",startInput);
-containerUnten.addEventListener("mousedown", startInput);
-
-outputTitel.addEventListener("touchend", startInput);
-outputTitel.addEventListener("mousedown", startInput);
-
-function nachRechts(){
-    if (msFilterTitel.length === 1){
-        msFilterTitel = musikSammlung;
-    } 
-    let index = 0;   
-    for (m of msFilterTitel){
-        if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-            index = msFilterTitel.indexOf(m);
-            if (index < (msFilterTitel.length - 1)){
-                inputText.value = msFilterTitel[index + 1].nummer;
-            }
-            if (msFilterTitel[index + 1].nummer === "Anhang"){
-                inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
-            };
-            displayText();
-            break;
-        }
-    }
-    if (buttonRechts.style.backgroundColor !== "green"){
-        buttonSpace.textContent = " ";
-    }  
-}
-    
-
-function nachLinks(){ 
-    if (msFilterTitel.length === 1){
-        msFilterTitel = musikSammlung;
-    }   
-    let index = 0;   
-        for (m of msFilterTitel){
-            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-                index = msFilterTitel.indexOf(m);
-                if (index > 0){
-                    inputText.value = msFilterTitel[index - 1].nummer;
-                }   
-                if (msFilterTitel[index - 1].nummer === "Anhang"){
-                    inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
-                };
-                displayText();
-                break;
-            }
-        }  
-        if (buttonLechts.style.backgroundColor !== "red"){
-            buttonSpace.textContent = " ";
-        }  
-}
-
 function displayText() {  
     
     containerGesamt.hidden=false;
     containerOben.hidden=false;
     containerTitel.hidden=false;
     containerTonart.hidden=false;
-
-    // containerButtons.hidden=true;
-    // buttonLinks.hidden=true;
-    // buttonRechts.hidden=true;
     
     containerUnten.hidden=false;
     outputText.hidden=false;
@@ -315,6 +226,7 @@ function displayText() {
     }
 }
 
+
 function startInput() {
     containerGesamt.hidden=true;
     containerOben.hidden=true;
@@ -353,6 +265,56 @@ function startInput() {
 
     msFilterTitel = musikSammlung;
 }
+
+function nachRechts(){
+    if (msFilterTitel.length === 1){
+        msFilterTitel = musikSammlung;
+    } 
+    let index = 0;   
+    for (m of msFilterTitel){
+        if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+            index = msFilterTitel.indexOf(m);
+            if (index < (msFilterTitel.length - 1)){
+                inputText.value = msFilterTitel[index + 1].nummer;
+            }
+            if (msFilterTitel[index + 1].nummer === "Anhang"){
+                inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
+            };
+            displayText();
+            break;
+        }
+    }
+    if (buttonRechts.style.backgroundColor !== "green"){
+        buttonSpace.textContent = " ";
+    }  
+}
+    
+
+function nachLinks(){ 
+    if (msFilterTitel.length === 1){
+        msFilterTitel = musikSammlung;
+    }   
+    let index = 0;   
+        for (m of msFilterTitel){
+            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+                index = msFilterTitel.indexOf(m);
+                if (index > 0){
+                    inputText.value = msFilterTitel[index - 1].nummer;
+                }   
+                if (msFilterTitel[index - 1].nummer === "Anhang"){
+                    inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
+                };
+                displayText();
+                break;
+            }
+        }  
+        if (buttonLechts.style.backgroundColor !== "red"){
+            buttonSpace.textContent = " ";
+        }  
+}
+
+
+
 
 if ('serviceworker' in navigator) {
     window.addEventListener('load', () => {
