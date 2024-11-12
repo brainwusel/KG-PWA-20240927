@@ -10,6 +10,7 @@ const outputText = document.getElementById("outputText");
 // const containerButtons = document.getElementById("containerButtons");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
+const buttonSpace = document.getElementById("buttonSpace");
 
 let enterCheck = false;
 let rechtsPfeil = false;
@@ -90,6 +91,7 @@ async function musikSammlungErstellen () {
 }
 
 function endInput(e) {
+    let suchWort = "";
     inputText.value = String(inputText.value).toUpperCase()
     if (e.code === "Space") {
         inputText.inputMode = "text";
@@ -117,14 +119,17 @@ function endInput(e) {
         if (inputText.value === "K"){
             inputText.value = "KG Blau-Weiß Fischenich";            
         }
+//      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
         msFilterNummer = musikSammlung.filter((m) => {
             return String(m.nummer) === String(inputText.value)
         });
+
         msFilterTitel = musikSammlung;
         if (msFilterNummer.length === 0) {
             msFilterTitel = musikSammlung.filter((m) => {
-                return m.titel.toUpperCase().indexOf(inputText.value) !== -1
+                return m.titel.toUpperCase().indexOf(inputText.value) !== -1 // Suchfunktion
             });
+            buttonSpace.textContent = "..."+inputText.value+"...";
             for (m of msFilterTitel){
                 inputText.value = m.nummer;
                 if (m.nummer === "Anhang"){
@@ -136,6 +141,8 @@ function endInput(e) {
         if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung){
                 buttonRechts.style.backgroundColor = "green";
                 buttonLinks.style.backgroundColor = "red";
+        } else if (msFilterTitel.length !== 1) {
+            buttonSpace.textContent = " ";
         }
         inputText.hidden=true;        
         displayText();
@@ -174,6 +181,9 @@ function nachRechts(){
             displayText();
             break;
         }
+    }
+    if (buttonRechts.style.backgroundColor !== "green"){
+        buttonSpace.textContent = " ";
     }  
 }
     
@@ -195,6 +205,9 @@ function nachLinks(){
                 displayText();
                 break;
             }
+        }  
+        if (buttonLechts.style.backgroundColor !== "red"){
+            buttonSpace.textContent = " ";
         }  
 }
 
@@ -319,6 +332,8 @@ function startInput() {
     outputText.textContent="";
     outputTitel.textContent="";
     outputTonart.textContent="";
+
+    buttonSpace.textContent = " ";
 
     inputText.value="";
     inputText.focus();
