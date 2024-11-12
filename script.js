@@ -287,9 +287,6 @@ function nachRechts(){
             break;
         }
     }
-    if (index === 0){
-        alert("nix");
-    }
     if (buttonRechts.style.backgroundColor !== "green"){
         buttonSpace.textContent = " ";
         buttonSpace.style.display = "none";
@@ -320,8 +317,6 @@ function nachLinks(){
             buttonSpace.style.display = "none";
         }  
 }
-
-
 
 
 if ('serviceworker' in navigator) {
