@@ -39,8 +39,8 @@ buttonRechts.addEventListener("mousedown", nachRechts);
 outputText.addEventListener("touchend",startInput);
 outputText.addEventListener("mousedown", startInput);
 
-containerUnten.addEventListener("touchend",startInput);
-containerUnten.addEventListener("mousedown", startInput);
+//containerUnten.addEventListener("touchend",startInput);
+//containerUnten.addEventListener("mousedown", startInput);
 
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
