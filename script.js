@@ -222,7 +222,7 @@ function displayText() {
             // outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
         } while((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
-        fontGroesse = fontGroesse - 1;
+        fontGroesse = fontGroesse + 4;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
     }
