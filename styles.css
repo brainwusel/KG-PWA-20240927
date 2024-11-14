@@ -21,7 +21,7 @@ body, html {
 
 .containerOben {
     display: flex;
-    height: 10%;
+    height: 13%;
 }
 
 .containerTitel {
@@ -74,7 +74,7 @@ body, html {
 } 
 
 .containerUnten {
-    height: 90%;
+    height: 87%;
     width: 100%;
     display: flex;
     justify-content: center;
