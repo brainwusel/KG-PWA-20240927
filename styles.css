@@ -84,7 +84,7 @@ body, html {
 }
 
 .outputText {
-    background-color: none;
+    background-color: grey;
 }
 
 .inputText {
