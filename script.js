@@ -11,9 +11,6 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 
-let rechtsPfeil = false;
-let linksPfeil = false;
-
 function MusikStueck (id,nummer,titel,tonart,mappe) {
     this.id = id;
     this.nummer = nummer;
@@ -273,9 +270,27 @@ function nachRechts(){
     if (msFilterTitel.length === 1){
         msFilterTitel = musikSammlung;
     } 
+// Verarbeiten einer Zahl, die nicht als Nummer eines MS vorkommt
+    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0){
+        msFilterTitel = musikSammlung;
+        let i = parseFloat(inputText.value);
+        while (i >= 0) {
+            const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
+            if (arrayTemp.length > 0) {
+                inputText.value = arrayTemp[0].nummer;
+                break;
+            };
+            i = i - 1;
+        };
+    };
+
+    // alert("?"+inputText.value);
+    // alert("msFiTilength: " + msFilterTitel.length);
+
     let index = 0;   
     for (m of msFilterTitel){
-        if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
+        if (String(inputText.value) === String(m.nummer) || String(inputText.value) === String(m.titel).toUpperCase()){
+            // alert("! "+inputText.value);
             index = msFilterTitel.indexOf(m);
             if (index < (msFilterTitel.length - 1)){
                 inputText.value = msFilterTitel[index + 1].nummer;
@@ -286,11 +301,11 @@ function nachRechts(){
             displayText();
             break;
         }
-    }
+    };
     if (buttonRechts.style.backgroundColor !== "green"){
         buttonSpace.textContent = " ";
         buttonSpace.style.display = "none";
-    }  
+    };  
 }
     
 
@@ -298,6 +313,20 @@ function nachLinks(){
     if (msFilterTitel.length === 1){
         msFilterTitel = musikSammlung;
     }   
+
+    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0){
+        msFilterTitel = musikSammlung;
+        let i = parseFloat(inputText.value);
+        while (i <= musikSammlung[musikSammlung.length-1].nummer) {
+            const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
+            if (arrayTemp.length > 0) {
+                inputText.value = arrayTemp[0].nummer;
+                break;
+            };
+            i = i + 1;
+        };
+    };
+
     let index = 0;   
         for (m of msFilterTitel){
             if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
