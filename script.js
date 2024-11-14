@@ -11,7 +11,7 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 
-function MusikStueck (id,nummer,titel,tonart,mappe) {
+function MusikStueck(id, nummer, titel, tonart, mappe) {
     this.id = id;
     this.nummer = nummer;
     this.titel = titel;
@@ -23,8 +23,6 @@ let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
 
-
-
 inputText.addEventListener("keydown", endInput);
 
 buttonLinks.addEventListener("onclick", nachLinks);
@@ -33,7 +31,7 @@ buttonLinks.addEventListener("mousedown", nachLinks);
 buttonRechts.addEventListener("onclick", nachRechts);
 buttonRechts.addEventListener("mousedown", nachRechts);
 
-outputText.addEventListener("touchend",startInput);
+outputText.addEventListener("touchend", startInput);
 outputText.addEventListener("mousedown", startInput);
 
 //containerUnten.addEventListener("touchend",startInput);
@@ -42,22 +40,20 @@ outputText.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
-
-
-async function getText (file) {
+async function getText(file) {
     let myText = "";
     let myObject = await fetch(file);
     myText = await myObject.text();
-    return(myText);    
+    return (myText);
 }
 
-async function musikSammlungErstellen () {
+async function musikSammlungErstellen() {
     let _musikSammlung = [];
     let _musikStueckeQuellText = await getText("musikstückequelle.csv");
     let _musikStueckeArray = _musikStueckeQuellText.split('\n');
     for (msText of _musikStueckeArray) {
         let msArray = msText.split(';');
-        let _musikStueck = new MusikStueck(msArray[0],msArray[1],msArray[2],msArray[3],msArray[4]);
+        let _musikStueck = new MusikStueck(msArray[0], msArray[1], msArray[2], msArray[3], msArray[4]);
         _musikSammlung.push(_musikStueck);
     }
     musikSammlung = _musikSammlung;
@@ -70,30 +66,30 @@ function endInput(e) {
     if (e.code === "Space") {
         inputText.inputMode = "text";
     }
-    if (e.code === "Enter"){
+    if (e.code === "Enter") {
         inputText.value = String(inputText.value).trim();
-        if (inputText.value === "T"){
+        if (inputText.value === "T") {
             inputText.value = "1 x TUSCH";
         }
-        if (String(inputText.value).startsWith("TT")){
+        if (String(inputText.value).startsWith("TT")) {
             inputText.value = "3 x TUSCH";
         }
-        if (inputText.value === "H"){
-             inputText.value = "Happy Birthday";
+        if (inputText.value === "H") {
+            inputText.value = "Happy Birthday";
         }
-        if (inputText.value === "P"){
+        if (inputText.value === "P") {
             inputText.value = "3";
         }
-        if (inputText.value === "B"){
+        if (inputText.value === "B") {
             inputText.value = "68";
         }
-        if (inputText.value === "J"){
+        if (inputText.value === "J") {
             inputText.value = "33";
-        }        
-        if (inputText.value === "K"){
-            inputText.value = "KG Blau-Weiß Fischenich";            
         }
-//      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
+        if (inputText.value === "K") {
+            inputText.value = "KG Blau-Weiß Fischenich";
+        }
+        //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
         msFilterNummer = musikSammlung.filter((m) => {
             return String(m.nummer) === String(inputText.value)
         });
@@ -103,67 +99,67 @@ function endInput(e) {
             msFilterTitel = musikSammlung.filter((m) => {
                 return m.titel.toUpperCase().indexOf(inputText.value) !== -1 // Suchfunktion
             });
-            buttonSpace.textContent = "..."+inputText.value+"...";
+            buttonSpace.textContent = "..." + inputText.value + "...";
             buttonSpace.style.display = "flex";
-            for (m of msFilterTitel){
+            for (m of msFilterTitel) {
                 inputText.value = m.nummer;
-                if (m.nummer === "Anhang"){
+                if (m.nummer === "Anhang") {
                     inputText.value = m.titel.toUpperCase();
                 }
                 break;
             };
         };
-        if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung){
-                buttonRechts.style.backgroundColor = "green";
-                buttonLinks.style.backgroundColor = "red";
+        if (msFilterTitel.length > 1 && msFilterTitel !== musikSammlung) {
+            buttonRechts.style.backgroundColor = "green";
+            buttonLinks.style.backgroundColor = "red";
         } else if (msFilterTitel.length !== 1) {
             buttonSpace.textContent = " ";
             buttonSpace.style.display = "none";
         }
-        inputText.hidden=true;        
+        inputText.hidden = true;
         displayText();
     };
 };
 
-function displayText() {  
-    
-    containerGesamt.hidden=false;
-    containerOben.hidden=false;
-    containerTitel.hidden=false;
-    containerTonart.hidden=false;
-    
-    containerUnten.hidden=false;
-    outputText.hidden=false;
-    outputTitel.hidden=false;
-    outputTonart.hidden=false;
-    
-    inputText.hidden=true;
-    
+function displayText() {
+
+    containerGesamt.hidden = false;
+    containerOben.hidden = false;
+    containerTitel.hidden = false;
+    containerTonart.hidden = false;
+
+    containerUnten.hidden = false;
+    outputText.hidden = false;
+    outputTitel.hidden = false;
+    outputTonart.hidden = false;
+
+    inputText.hidden = true;
+
     outputTitel.textContent = "";
     outputTitel.style.color = "black";
     outputTitel.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
-    
+
     outputTonart.textContent = "";
     outputTonart.style.color = "black";
     outputTonart.style.backgroundColor = "white";
     containerTonart.style.backgroundColor = "white";
-    
+
     outputText.textContent = "";
 
     inputText.value = String(inputText.value).trimEnd();
 
     for (m of musikSammlung) {
         if (String(m.nummer).toUpperCase() === String(inputText.value).toUpperCase()) {
-            if (String(m.mappe).startsWith("gelb")){
+            if (String(m.mappe).startsWith("gelb")) {
                 containerTitel.style.backgroundColor = "yellow";
                 outputTitel.style.backgroundColor = "yellow";
                 outputTitel.style.color = "black";
                 containerTonart.style.backgroundColor = "yellow";
                 outputTonart.style.backgroundColor = "yellow";
                 outputTonart.style.color = "black";
-            } 
-            else if (String(m.mappe).startsWith("grün")){
+            }
+            else if (String(m.mappe).startsWith("grün")) {
                 containerTitel.style.backgroundColor = "green";
                 outputTitel.style.backgroundColor = "green";
                 outputTitel.style.color = "white";
@@ -171,7 +167,7 @@ function displayText() {
                 outputTonart.style.backgroundColor = "green";
                 outputTonart.style.color = "white";
             }
-            else if (String(m.mappe).startsWith("blau")){
+            else if (String(m.mappe).startsWith("blau")) {
                 containerTitel.style.backgroundColor = "blue";
                 outputTitel.style.backgroundColor = "blue";
                 outputTitel.style.color = "white";
@@ -179,8 +175,8 @@ function displayText() {
                 outputTonart.style.backgroundColor = "blue";
                 outputTonart.style.color = "white";
             }
-            
-            if (m.titel !== " " && m.titel !== ""){
+
+            if (m.titel !== " " && m.titel !== "") {
                 let fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
@@ -188,11 +184,11 @@ function displayText() {
                     outputTitel.style.fontFamily = "Times";
                     outputTitel.style.overflowWrap = "normal";
                     outputTitel.textContent = m.titel;
-                } while((outputTitel.clientHeight < containerTitel.clientHeight) & (outputTitel.clientWidth <= containerTitel.clientWidth))           
+                } while ((outputTitel.clientHeight < containerTitel.clientHeight) & (outputTitel.clientWidth <= containerTitel.clientWidth))
                 fontGroesse = fontGroesse - 1;
-                outputTitel.style.fontSize = `${fontGroesse}px`;      
+                outputTitel.style.fontSize = `${fontGroesse}px`;
             }
-            if (m.tonart !== " "){
+            if (m.tonart !== " ") {
                 let fontGroesse = 1;
                 do {
                     fontGroesse = fontGroesse + 1;
@@ -200,15 +196,15 @@ function displayText() {
                     outputTonart.style.fontFamily = "Times";
                     outputTonart.style.overflowWrap = "normal";
                     outputTonart.textContent = m.tonart;
-                } while((outputTonart.clientHeight < containerTonart.clientHeight) & (outputTonart.clientWidth <= containerTonart.clientWidth))           
+                } while ((outputTonart.clientHeight < containerTonart.clientHeight) & (outputTonart.clientWidth <= containerTonart.clientWidth))
                 fontGroesse = fontGroesse - 1;
-                outputTonart.style.fontSize = `${fontGroesse}px`;         
+                outputTonart.style.fontSize = `${fontGroesse}px`;
             }
             break;
         }
     }
 
-    if (inputText.value) { 
+    if (inputText.value) {
         outputText.textContent = inputText.value;
         let fontGroesse = 1;
         do {
@@ -218,7 +214,7 @@ function displayText() {
             outputText.style.overflowWrap = "normal";
             // outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
-        } while((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))           
+        } while ((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))
         fontGroesse = fontGroesse + 4;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
@@ -227,29 +223,29 @@ function displayText() {
 
 
 function startInput() {
-    containerGesamt.hidden=true;
-    containerOben.hidden=true;
-    containerTitel.hidden=true;
-    containerTonart.hidden=true;
-    containerUnten.hidden=true
-    outputText.hidden=true;
-    outputTitel.hidden=true;
-    outputTonart.hidden=true;
-    inputText.hidden=false;
+    containerGesamt.hidden = true;
+    containerOben.hidden = true;
+    containerTitel.hidden = true;
+    containerTonart.hidden = true;
+    containerUnten.hidden = true
+    outputText.hidden = true;
+    outputTitel.hidden = true;
+    outputTonart.hidden = true;
+    inputText.hidden = false;
 
     buttonLinks.style.backgroundColor = "white";
     buttonRechts.style.backgroundColor = "white";
 
-    outputText.textContent="";
-    outputTitel.textContent="";
-    outputTonart.textContent="";
+    outputText.textContent = "";
+    outputTitel.textContent = "";
+    outputTonart.textContent = "";
 
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
 
-    inputText.value="";
+    inputText.value = "";
     inputText.focus();
-    inputText.inputMode="numeric";
+    inputText.inputMode = "numeric";
 
     containerOben.style.backgroundColor = "white";
     containerTitel.style.backgroundColor = "white";
@@ -266,12 +262,12 @@ function startInput() {
     msFilterTitel = musikSammlung;
 }
 
-function nachRechts(){
-    if (msFilterTitel.length === 1){
+function nachRechts() {
+    if (msFilterTitel.length === 1) {
         msFilterTitel = musikSammlung;
-    } 
-// Verarbeiten einer Zahl, die nicht als Nummer eines MS vorkommt
-    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0){
+    }
+    // Verarbeiten einer Zahl, die nicht als Nummer eines MS vorkommt
+    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0) {
         msFilterTitel = musikSammlung;
         let i = parseFloat(inputText.value);
         while (i >= 0) {
@@ -283,41 +279,36 @@ function nachRechts(){
             i = i - 1;
         };
     };
-
-    // alert("?"+inputText.value);
-    // alert("msFiTilength: " + msFilterTitel.length);
-
-    let index = 0;   
-    for (m of msFilterTitel){
-        if (String(inputText.value) === String(m.nummer) || String(inputText.value) === String(m.titel).toUpperCase()){
+    let index = 0;
+    for (m of msFilterTitel) {
+        if (String(inputText.value) === String(m.nummer) || String(inputText.value) === String(m.titel).toUpperCase()) {
             // alert("! "+inputText.value);
             index = msFilterTitel.indexOf(m);
-            if (index < (msFilterTitel.length - 1)){
+            if (index < (msFilterTitel.length - 1)) {
                 inputText.value = msFilterTitel[index + 1].nummer;
             }
-            if (msFilterTitel[index + 1].nummer === "Anhang"){
+            if (msFilterTitel[index + 1].nummer === "Anhang") {
                 inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
             };
             displayText();
             break;
         }
     };
-    if (buttonRechts.style.backgroundColor !== "green"){
+    if (buttonRechts.style.backgroundColor !== "green") {
         buttonSpace.textContent = " ";
         buttonSpace.style.display = "none";
-    };  
+    };
 }
-    
 
-function nachLinks(){ 
-    if (msFilterTitel.length === 1){
+
+function nachLinks() {
+    if (msFilterTitel.length === 1) {
         msFilterTitel = musikSammlung;
-    }   
-
-    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0){
+    }
+    if (parseFloat(inputText.value) > 0 && parseFloat(inputText.value) < 1000 && musikSammlung.filter((e) => e.nummer === inputText.value).length === 0) {
         msFilterTitel = musikSammlung;
         let i = parseFloat(inputText.value);
-        while (i <= musikSammlung[musikSammlung.length-1].nummer) {
+        while (i <= musikSammlung[musikSammlung.length - 1].nummer) {
             const arrayTemp = musikSammlung.filter((e) => parseFloat(e.nummer) === i);
             if (arrayTemp.length > 0) {
                 inputText.value = arrayTemp[0].nummer;
@@ -327,26 +318,25 @@ function nachLinks(){
         };
     };
 
-    let index = 0;   
-        for (m of msFilterTitel){
-            if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()){
-                index = msFilterTitel.indexOf(m);
-                if (index > 0){
-                    inputText.value = msFilterTitel[index - 1].nummer;
-                }   
-                if (msFilterTitel[index - 1].nummer === "Anhang"){
-                    inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
-                };
-                displayText();
-                break;
+    let index = 0;
+    for (m of msFilterTitel) {
+        if (inputText.value === String(m.nummer) || inputText.value === String(m.titel).toUpperCase()) {
+            index = msFilterTitel.indexOf(m);
+            if (index > 0) {
+                inputText.value = msFilterTitel[index - 1].nummer;
             }
-        }  
-        if (buttonLinks.style.backgroundColor !== "red"){
-            buttonSpace.textContent = " ";
-            buttonSpace.style.display = "none";
-        }  
+            if (msFilterTitel[index - 1].nummer === "Anhang") {
+                inputText.value = msFilterTitel[index - 1].titel.toUpperCase();
+            };
+            displayText();
+            break;
+        }
+    }
+    if (buttonLinks.style.backgroundColor !== "red") {
+        buttonSpace.textContent = " ";
+        buttonSpace.style.display = "none";
+    }
 }
-
 
 if ('serviceworker' in navigator) {
     window.addEventListener('load', () => {
