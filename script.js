@@ -284,8 +284,11 @@ function nachRechts() {
         if (String(inputText.value) === String(m.nummer) || String(inputText.value) === String(m.titel).toUpperCase()) {
             // alert("! "+inputText.value);
             index = msFilterTitel.indexOf(m);
+            // alert("index"+index);
+            // alert("msFiTiLength:"+msFilterTitel.length);
             if (index < (msFilterTitel.length - 1)) {
                 inputText.value = msFilterTitel[index + 1].nummer;
+                // alert("msFiTi.index..index+1..index+2.nummer"+musikSammlung[index].nummer + "/"+musikSammlung[index+1].nummer + "/"+musikSammlung[index+2].nummer);
             }
             if (msFilterTitel[index + 1].nummer === "Anhang") {
                 inputText.value = msFilterTitel[index + 1].titel.toUpperCase();
