@@ -1,4 +1,6 @@
+const containerEingabe = document.getElementById('containerEingabe');
 const inputText = document.getElementById('inputText');
+const hinweisText = document.getElementById('hinweisText');
 const containerGesamt = document.getElementById("containerGesamt");
 const containerOben = document.getElementById("containerOben");
 const containerTitel = document.getElementById("containerTitel");
@@ -10,6 +12,8 @@ const outputText = document.getElementById("outputText");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
+
+
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
     this.id = id;
@@ -133,6 +137,7 @@ function displayText() {
     outputTitel.hidden = false;
     outputTonart.hidden = false;
 
+    containerEingabe.hidden = true;
     inputText.hidden = true;
 
     outputTitel.textContent = "";
@@ -212,10 +217,10 @@ function displayText() {
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
-            // outputText.style.hyphens = "auto";
+            outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
-        } while ((outputText.clientHeight <= containerUnten.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))
-        fontGroesse = fontGroesse + 2;
+        } while ((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))
+        fontGroesse = fontGroesse + 0;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
     }
@@ -243,6 +248,8 @@ function startInput() {
     buttonSpace.textContent = " ";
     buttonSpace.style.display = "none";
 
+    containerEingabe.hidden = false;
+
     inputText.value = "";
     inputText.focus();
     inputText.inputMode = "numeric";
@@ -253,7 +260,8 @@ function startInput() {
     containerUnten.style.backgroundColor = "white";
     outputTitel.style.backgroundColor = "white";
     outputTonart.style.backgroundColor = "white";
-    outputText.style.backgroundColor = "white";
+    outputText.style.backgroundColor = "rgba(1, 1, 1, 0.001)";
+    containerUnten.style.backgroundColor = "white";
 
     outputTitel.style.color = "black";
     outputTonart.style.color = "black";

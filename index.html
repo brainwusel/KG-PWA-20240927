@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -8,8 +9,12 @@
     <title>KG Blau-Weiß Fischenich</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric" rows="3"></input>
+    <div id="containerEingabe" class="containerEingabe">
+        <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric" rows="3"></input>
+        <div id="hinweisText" class="hinweisText"></div>
+    </div>
     <div id="containerGesamt" class="containerGesamt">
         <!-- Obere Zeile mit zwei Feldern -->
         <div id="containerOben" class="containerOben">
@@ -20,7 +25,7 @@
                 <div id="outputTonart" class="outputTonart">Tonart</div>
             </div>
         </div>
-        
+
         <!-- Unteres Feld -->
         <div id="containerUnten" class="containerUnten">
             <div id="outputText" class="outputText">KG Blau-Weiß Fischenisch</div>
@@ -29,25 +34,26 @@
 
     <div id="containerButtons" class="containerButtons">
         <button id="buttonLinks" class="buttonLinks"></buttton>
-        <button id="buttonSpace" class="buttonSpace" ></button>
-        <button id="buttonRechts" class="buttonRechts"></button> 
+            <button id="buttonSpace" class="buttonSpace"></button>
+            <button id="buttonRechts" class="buttonRechts"></button>
     </div>
-   
+
 
     <script src="script.js"></script>
     <script>
         musikSammlungErstellen();
         inputText.value = "KG Blau-Weiß Fischenich";
+        hinweisText.textContent = "t - 1xTusch | ttt - 3xTusch | p - schmucke Prinz | b - op de Maat | j - oh, wie bist | h - Happy Birthday";
         containerTitel.style.backgroundColor = "white";
         containerTonart.style.backgroundColor = "white";
         containerUnten.style.backgroundColor = "white";
         outputTitel.style.backgroundColor = "white";
         outputTonart.style.backgroundColor = "white";
-        outputText.style.backgroundColor = "white";
         // containerButtons.hidden = true;
         // buttonRechts.hidden = true;
         // buttonLinks.hidden = true;
         displayText();
     </script>
 </body>
+
 </html>
