@@ -94,7 +94,7 @@ function endInput(e) {
             inputText.value = "33";
         }
         if (inputText.value === "K") {
-            inputText.value = "";
+            inputText.value = "KUNO";
             ritterKuno.hidden = false;
         }
         //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
@@ -133,6 +133,11 @@ function endInput(e) {
 };
 
 function displayText() {
+
+    if (inputText.value === "KUNO"){
+        ritterKuno.hidden = false;
+        containerGesamt.hidden = true;
+    }
 
     containerGesamt.hidden = false;
     containerOben.hidden = false;
@@ -216,7 +221,7 @@ function displayText() {
         }
     }
 
-    if (inputText.value) {
+    if (inputText.value !== "KUNO") {
         outputText.textContent = inputText.value;
         let fontGroesse = 1;
         do {
