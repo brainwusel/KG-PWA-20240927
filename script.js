@@ -12,6 +12,7 @@ const outputText = document.getElementById("outputText");
 const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
+const ritterKuno = document.getElementById("ritterKuno");
 
 
 
@@ -44,6 +45,9 @@ outputText.addEventListener("mousedown", startInput);
 outputTitel.addEventListener("touchend", startInput);
 outputTitel.addEventListener("mousedown", startInput);
 
+ritterKuno.addEventListener("onclick", startInput);
+ritterKuno.addEventListener("mousedown", startInput);
+
 async function getText(file) {
     let myText = "";
     let myObject = await fetch(file);
@@ -65,7 +69,6 @@ async function musikSammlungErstellen() {
 }
 
 function endInput(e) {
-    let suchWort = "";
     inputText.value = String(inputText.value).toUpperCase()
     if (e.code === "Space") {
         inputText.inputMode = "text";
@@ -91,7 +94,8 @@ function endInput(e) {
             inputText.value = "33";
         }
         if (inputText.value === "K") {
-            inputText.value = "KG Blau-Weiß Fischenich";
+            inputText.value = "";
+            ritterKuno.hidden = false;
         }
         //      check ob eine evtl. eingegebene Zahl zu einer Nummer eines MS passt - dann darf sie nicht in der folgenden Suchfunktion verwendet werden
         msFilterNummer = musikSammlung.filter((m) => {
@@ -109,6 +113,9 @@ function endInput(e) {
                 inputText.value = m.nummer;
                 if (m.nummer === "Anhang") {
                     inputText.value = m.titel.toUpperCase();
+                }
+                if (m.nummer === "KG Blau-Weiß Fischenich"){
+                    inputText.value = "";
                 }
                 break;
             };
@@ -228,6 +235,7 @@ function displayText() {
 
 
 function startInput() {
+    ritterKuno.hidden = true;
     containerGesamt.hidden = true;
     containerOben.hidden = true;
     containerTitel.hidden = true;

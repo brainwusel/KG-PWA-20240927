@@ -13,6 +13,11 @@ body, html {
     flex-direction: column;
 }
 
+.ritterKuno {
+    height: 100%;
+    width: 100%;
+}
+
 .containerGesamt {
     display: flex;
     flex-direction: column;
