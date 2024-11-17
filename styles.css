@@ -60,7 +60,6 @@ body, html {
     background-color: white;
     border-color: red;
 }
-
  .buttonSpace {
     width: 20%;
     display:flex;
@@ -68,9 +67,7 @@ body, html {
     background-color: rgba(1,1,1,0);
     border-color: rgba(1,1,1,0);
     justify-content: center;
-    hidden: true;
-    /* align-self: center; */
-} 
+ }
 
 .buttonRechts {
     width: 10%;
@@ -88,10 +85,6 @@ body, html {
     text-align: center;
     background-color: white;
 }
-
-/* .outputText {
-    background-color: ;
-} */
 
 .containerEingabe {
     height: 70%;
