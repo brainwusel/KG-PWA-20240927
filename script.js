@@ -75,6 +75,9 @@ function endInput(e) {
     }
     if (e.code === "Enter") {
         inputText.value = String(inputText.value).trim();
+        if (inputText.value === "") {
+            inputText.value = "KUNO"
+        }
         if (inputText.value === "T") {
             inputText.value = "1 x TUSCH";
         }
@@ -137,6 +140,10 @@ function displayText() {
     if (inputText.value === "KUNO"){
         ritterKuno.hidden = false;
         containerGesamt.hidden = true;
+        containerUnten.hidden = true;
+        buttonLinks.hidden = true;
+        buttonRechts.hidden = true;
+        buttonSpace.hidden = true;
     }
 
     containerGesamt.hidden = false;
