@@ -16,7 +16,7 @@ body, html {
 .containerGesamt {
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
 }
 
 .containerOben {
@@ -42,7 +42,7 @@ body, html {
 
  .containerButtons {
     width: 100%;
-    height: 5%;
+    height: 15%;
     display:flex;
     flex-direction:row;
     justify-content:space-between;
@@ -60,9 +60,10 @@ body, html {
     width: 20%;
     display:flex;
     font-size: 2rem;
-    background-color: white;
-    border-color: white;
+    background-color: rgba(1,1,1,0);
+    border-color: rgba(1,1,1,0);
     justify-content: center;
+    hidden: true;
     /* align-self: center; */
 } 
 
@@ -74,7 +75,7 @@ body, html {
 } 
 
 .containerUnten {
-    height: 87%;
+    height: 77%;
     width: 100%;
     display: flex;
     justify-content: center;

@@ -217,10 +217,10 @@ function displayText() {
             outputText.style.fontSize = `${fontGroesse}px`;
             outputText.style.fontFamily = "Times";
             outputText.style.overflowWrap = "normal";
-            outputText.style.hyphens = "auto";
+            // outputText.style.hyphens = "auto";
             outputText.textContent = inputText.value;
-        } while ((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerUnten.clientWidth))
-        fontGroesse = fontGroesse + 0;
+        } while ((outputText.clientHeight < containerGesamt.clientHeight) & (outputText.clientWidth <= containerGesamt.clientWidth))
+        fontGroesse = fontGroesse - 1;
         outputText.style.fontSize = `${fontGroesse}px`;
         outputText.textContent = inputText.value;
     }
