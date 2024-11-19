@@ -13,6 +13,7 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
+const temp = "";
 
 
 
