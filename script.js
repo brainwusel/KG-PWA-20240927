@@ -56,19 +56,12 @@ autoCheck.addEventListener("mousedown", automatikEinaus);
 function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){
         autoCheck.style.backgroundColor = "lightgreen";
-        autoCheck.textContent="Automatik EINgeschaltet";
+        autoCheck.textContent="AUTOMATIK EIN";
         musikSammlung = msGeladen;
-        const t = inputText.inputMode;
-        inputText.focus();
-        inputText.inputMode = t;
-        alert("!");
     } else {
         autoCheck.style.backgroundColor = "red";
-        autoCheck.textContent="Automatik AUSgeschaltet";
+        autoCheck.textContent="AUTOMATIK AUS";
         musikSammlung = [];
-        const t = inputText.inputMode;
-        inputText.focus();
-        inputText.inputMode = t;
     }
 };
 
