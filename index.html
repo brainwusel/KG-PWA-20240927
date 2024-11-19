@@ -15,6 +15,7 @@
     <div id="containerEingabe" class="containerEingabe">
         <input id="inputText" class="inputText" placeholder="Eingabe" inputmode="numeric" rows="3"></input>
         <div id="hinweisText" class="hinweisText"></div>
+        <button id="autoCheck" class="autoCheck">Automatik ein/aus</button>
     </div>
     <div id="containerGesamt" class="containerGesamt">
         <div id="containerOben" class="containerOben">
@@ -37,6 +38,7 @@
     <script src="script.js"></script>
     <script>
         musikSammlungErstellen();
+        autoCheck.style.backgroundColor = "lightgreen";
         inputText.value = "KUNO";
         hinweisText.textContent = "T - 1xTusch | TTT - 3xTusch | P - schmucke Prinz | B - op de Maat | J - oh, wie bist | H - Happy Birthday | K - Kuno";
         containerTitel.style.backgroundColor = "white";

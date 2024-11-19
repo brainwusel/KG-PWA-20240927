@@ -13,7 +13,7 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
-const temp = "";
+const autoCheck = document.getElementById("autoCheck");
 
 
 
@@ -28,6 +28,7 @@ function MusikStueck(id, nummer, titel, tonart, mappe) {
 let musikSammlung = [MusikStueck];
 let msFilterNummer = [MusikStueck];
 let msFilterTitel = [MusikStueck];
+let msGeladen = [MusikStueck];
 
 inputText.addEventListener("keydown", endInput);
 
@@ -49,6 +50,21 @@ outputTitel.addEventListener("mousedown", startInput);
 ritterKuno.addEventListener("onclick", startInput);
 ritterKuno.addEventListener("mousedown", startInput);
 
+autoCheck.addEventListener("onclick", automatikEinaus);
+autoCheck.addEventListener("mousedown", automatikEinaus);
+
+function automatikEinaus (e) {
+    if (autoCheck.style.backgroundColor === "red"){
+        autoCheck.style.backgroundColor = "lightgreen";
+        autoCheck.textContent="Automatik EINgeschaltet";
+        musikSammlung = msGeladen;
+    } else {
+        autoCheck.style.backgroundColor = "red";
+        autoCheck.textContent="Automatik AUSgeschaltet";
+        musikSammlung = [];
+    }
+};
+
 async function getText(file) {
     let myText = "";
     let myObject = await fetch(file);
@@ -65,6 +81,7 @@ async function musikSammlungErstellen() {
         let _musikStueck = new MusikStueck(msArray[0], msArray[1], msArray[2], msArray[3], msArray[4]);
         _musikSammlung.push(_musikStueck);
     }
+    msGeladen = _musikSammlung;
     musikSammlung = _musikSammlung;
     msFilterTitel = _musikSammlung;
 }
@@ -158,6 +175,8 @@ function displayText() {
     outputTonart.hidden = false;
 
     containerEingabe.hidden = true;
+    hinweisText.hidden = true;
+    autoCheck.hidden = true;
     inputText.hidden = true;
 
     outputTitel.textContent = "";
@@ -257,6 +276,12 @@ function startInput() {
     outputText.hidden = true;
     outputTitel.hidden = true;
     outputTonart.hidden = true;
+
+
+    containerEingabe.hidden = false;
+    hinweisText.hidden = false;
+    autoCheck.hidden = false;
+    inputText.hidden = false;
     inputText.hidden = false;
 
     buttonLinks.style.backgroundColor = "white";
