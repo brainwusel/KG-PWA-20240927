@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 // We tell express to serve the folder public as static content
 app.use(express.static('public',{ maxAge: '300'}));
 
-// app.get('/public');
+// app.get('/public');    
 
 
 const server = https.createServer(options, app);
