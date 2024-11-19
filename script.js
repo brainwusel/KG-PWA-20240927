@@ -58,12 +58,16 @@ function automatikEinaus (e) {
         autoCheck.style.backgroundColor = "lightgreen";
         autoCheck.textContent="Automatik EINgeschaltet";
         musikSammlung = msGeladen;
+        const t = inputText.inputMode;
         inputText.focus();
+        inputText.inputMode = t;
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="Automatik AUSgeschaltet";
         musikSammlung = [];
+        const t = inputText.inputMode;
         inputText.focus();
+        inputText.inputMode = t;
     }
 };
 
