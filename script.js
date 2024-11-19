@@ -61,6 +61,7 @@ function automatikEinaus (e) {
         const t = inputText.inputMode;
         inputText.focus();
         inputText.inputMode = t;
+        alert("!");
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="Automatik AUSgeschaltet";
