@@ -55,11 +55,13 @@ function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){
         autoCheck.style.backgroundColor = "lightgreen";
         autoCheck.textContent="   AUTOMATIK IST AN   ";
+        autoCheck.style.fontWeight = "bold";
         musikSammlung = msGeladen;
         inputText.focus();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="   AUTOMATIK IST AUS   ";
+        autoCheck.style.fontWeight = "normal";
         musikSammlung = [];
         inputText.focus();
     }
