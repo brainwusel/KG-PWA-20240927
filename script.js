@@ -56,15 +56,10 @@ function automatikEinaus (e) {
         autoCheck.style.backgroundColor = "lightgreen";
         autoCheck.textContent="   AUTOMATIK IST AN   ";
         musikSammlung = msGeladen;
-        inputText.focus();
-        inputText.inputMode = "numeric";
-        startInput();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="   AUTOMATIK IST AUS   ";
         musikSammlung = [];
-        inputText.focus();
-        inputText.inputMode = "numeric";
     }
 };
 
