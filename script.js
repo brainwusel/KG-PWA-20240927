@@ -15,8 +15,6 @@ const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
 const autoCheck = document.getElementById("autoCheck");
 
-
-
 function MusikStueck(id, nummer, titel, tonart, mappe) {
     this.id = id;
     this.nummer = nummer;
@@ -56,11 +54,11 @@ autoCheck.addEventListener("mousedown", automatikEinaus);
 function automatikEinaus (e) {
     if (autoCheck.style.backgroundColor === "red"){
         autoCheck.style.backgroundColor = "lightgreen";
-        autoCheck.textContent="AUTOMATIK EIN";
+        autoCheck.textContent="   AUTOMATIK EIN   ";
         musikSammlung = msGeladen;
     } else {
         autoCheck.style.backgroundColor = "red";
-        autoCheck.textContent="AUTOMATIK AUS";
+        autoCheck.textContent="   AUTOMATIK AUS   ";
         musikSammlung = [];
     }
 };
