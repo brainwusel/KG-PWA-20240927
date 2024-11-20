@@ -233,7 +233,7 @@ function displayText() {
                     outputTitel.style.overflowWrap = "normal";
                     outputTitel.textContent = m.titel;
                 } while ((outputTitel.clientHeight < containerTitel.clientHeight) & (outputTitel.clientWidth <= containerTitel.clientWidth))
-                fontGroesse = fontGroesse + 2;
+                fontGroesse = fontGroesse - 1;
                 outputTitel.style.fontSize = `${fontGroesse}px`;
             }
             if (m.tonart !== " ") {
@@ -245,7 +245,7 @@ function displayText() {
                     outputTonart.style.overflowWrap = "normal";
                     outputTonart.textContent = m.tonart;
                 } while ((outputTonart.clientHeight < containerTonart.clientHeight) & (outputTonart.clientWidth <= containerTonart.clientWidth))
-                fontGroesse = fontGroesse + 2;
+                fontGroesse = fontGroesse - 1;
                 outputTonart.style.fontSize = `${fontGroesse}px`;
             }
             break;
