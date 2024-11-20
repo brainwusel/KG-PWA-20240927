@@ -13,7 +13,7 @@ const buttonLinks = document.getElementById("buttonLinks");
 const buttonRechts = document.getElementById("buttonRechts");
 const buttonSpace = document.getElementById("buttonSpace");
 const ritterKuno = document.getElementById("ritterKuno");
-const autoCheck = document.getElementById("autoCheck");
+//const autoCheck = document.getElementById("autoCheck");//
 
 function MusikStueck(id, nummer, titel, tonart, mappe) {
     this.id = id;
@@ -48,6 +48,7 @@ outputTitel.addEventListener("mousedown", startInput);
 ritterKuno.addEventListener("onclick", startInput);
 ritterKuno.addEventListener("mousedown", startInput);
 
+//
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
@@ -66,6 +67,7 @@ function automatikEinaus (e) {
         inputText.focus();
     }
 };
+//
 
 async function getText(file) {
     let myText = "";
