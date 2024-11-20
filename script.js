@@ -48,7 +48,7 @@ outputTitel.addEventListener("mousedown", startInput);
 ritterKuno.addEventListener("onclick", startInput);
 ritterKuno.addEventListener("mousedown", startInput);
 
-//
+/*
 autoCheck.addEventListener("onclick", automatikEinaus);
 autoCheck.addEventListener("mousedown", automatikEinaus);
 
@@ -67,7 +67,7 @@ function automatikEinaus (e) {
         inputText.focus();
     }
 };
-//
+*/
 
 async function getText(file) {
     let myText = "";
@@ -180,7 +180,7 @@ function displayText() {
 
     containerEingabe.hidden = true;
     hinweisText.hidden = true;
-    autoCheck.hidden = true;
+    //autoCheck.hidden = true;
     inputText.hidden = true;
 
     outputTitel.textContent = "";
@@ -284,7 +284,7 @@ function startInput() {
 
     containerEingabe.hidden = false;
     hinweisText.hidden = false;
-    autoCheck.hidden = false;
+   // autoCheck.hidden = false;
 
     inputText.hidden = false;
     inputText.hidden = false;
