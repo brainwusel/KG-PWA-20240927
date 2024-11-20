@@ -58,6 +58,7 @@ function automatikEinaus (e) {
         musikSammlung = msGeladen;
         inputText.focus();
         inputText.inputMode = "numeric";
+        startInput();
     } else {
         autoCheck.style.backgroundColor = "red";
         autoCheck.textContent="   AUTOMATIK AUS   ";
